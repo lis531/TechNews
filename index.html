@@ -235,7 +235,7 @@
                 <div> 
                     <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
                     <div class="newsDesc">
-                        <p>Autor Lisu</p>
+                        <p>Autor ${autor}</p>
                         <p>Dodano 20-02-2023</p>
                     </div>
                 </div>
@@ -251,7 +251,13 @@
         const orderPopular = document.getElementById("popular")
         const orderImportant = document.getElementById("lastButton")
         const data = new Date();
-        const newsNum = [];
+        const newsNum = document.getElementsByClassName("news");
+        console.log(newsNum)
+        for(i = newsNum.length; i > 0; i--){
+            //newsNum[i].firstChild = ""
+            newsNum[i].lastChild.firstChild.innerHTML = "";
+            newsNum[i].lastChild.lastChild.innerHTML = "";
+        }
 
 
         const orderByLatest = () =>{
