@@ -254,9 +254,8 @@
         const newsNum = document.getElementsByClassName("news");
         console.log(newsNum)
         for(i = newsNum.length; i > 0; i--){
-            //newsNum[i].firstChild = ""
-            newsNum[i].lastChild.firstChild.innerHTML = "";
-            newsNum[i].lastChild.lastChild.innerHTML = "";
+            //newsNum[i].firstChild = "" newsNum[i].lastChild.firstChild.innerHTML = ""; newsNum[i].lastChild.lastChild.firstChild.innerHTML = "";
+newsNum[i].lastChild.lastChild.lastChild.innerHTML = "";
         }
 
 
