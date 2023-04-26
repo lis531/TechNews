@@ -243,37 +243,43 @@
             <div class="lineBetween"></div>
         </div>
         <div>
-            <h3 id="bottom">Copyright </h3>
+            <h3 id="bottom"></h3>
         </div>
     </div>
     <script>
         const orderLatest = document.getElementById("latest")
         const orderPopular = document.getElementById("popular")
         const orderImportant = document.getElementById("lastButton")
-        const data = new Date();
-        const newsNum = document.getElementsByClassName("news");
-        console.log(newsNum)
-        for(i = newsNum.length; i > 0; i--){
-            //newsNum[i].firstChild = ""
-newsNum[i].lastChild.firstChild.innerHTML = "";
-newsNum[i].lastChild.lastChild.firstChild.innerHTML = "";
-newsNum[i].lastChild.lastChild.lastChild.innerHTML = "";
+        const date = new Date();
+
+        const newsNum = document.querySelectorAll('.news');
+        for (let n = 0; n < newsNum.length; n++) {
+            const images = newsNum[n].querySelectorAll('img');
+            for (let i = 0; i < images.length; i++) {
+                images[i].src = '';
+            }
+            const headings = newsNum[n].querySelectorAll('h2');
+            for (let h = 0; h < headings.length; h++) {
+                headings[h].innerHTML = '';
+            }
+            const author = newsNum[n].querySelector('.newsDesc p:first-of-type');
+            author.innerHTML = '';
+            const date = newsNum[n].querySelector('.newsDesc p:last-of-type');
+            date.innerHTML = '';
         }
 
 
         const orderByLatest = () =>{
+
+        }
+
+        const orderByPopular = () =>{
             
         }
-        const orderByPopular = () =>{
-            let likes;
-            for(i = 0; i < newsNum.length; i++){
-                likes = newsNum[i];
-            }
-        }
+
         const orderByImportant = () =>{
-
+        
         }
-
 
         orderLatest.addEventListener("click", orderByLatest)
         orderPopular.addEventListener("click", orderByPopular)
@@ -281,8 +287,7 @@ newsNum[i].lastChild.lastChild.lastChild.innerHTML = "";
 
         /* footer */
         const footer = document.getElementById("bottom")
-        footer.innerHTML = `Borys Gajewski © ${data.getFullYear()}`;
-
+        footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 
         /* other */
         const home = document.getElementById("home")
