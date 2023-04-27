@@ -293,7 +293,7 @@
         //let car = cars.find(car => car.color === "red" && car.type === "cabrio");
         //let redCars = cars.filter(car => car.color === "red");
 
-        defaultOrder()
+        
         const defaultOrder = () =>{
             for (let n = 0; n < newsNum.length; n++) {
                 const images = newsNum[n].querySelectorAll('img');
@@ -310,6 +310,7 @@
                 date.innerHTML = tweets[i].date;
             }
         }
+        defaultOrder()
         
         
         const orderByLatest = () =>{
