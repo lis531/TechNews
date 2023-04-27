@@ -255,56 +255,63 @@
         let tweets = [
             {
                 image: "https:",
-                header: "",
-                author: "",
-                date: ""
+                header: "tweey1",
+                author: "Bezimienny",
+                date: "20-02-2020"
             },
             {
                 image: "https:",
-                header: "",
-                author: "",
-                date: ""
+                header: "tweet2",
+                author: "Nikczemny",
+                date: "20-02-2000"
             },
             {
                 image: "https:",
-                header: "",
-                author: "",
-                date: ""
+                header: "twork3",
+                author: "Nub",
+                date: "10-10-2010"
             },
             {
                 image: "https:",
-                header: "",
-                author: "",
-                date: ""
+                header: "twark4",
+                author: "Totalny",
+                date: "20-04-2023"
             },
             {
                 image: "https:",
-                header: "",
-                author: "",
-                date: ""
+                header: "trter5",
+                author: "Szef",
+                date: "09-06-2001"
             }
         ];
         
+
+        
         const newsNum = document.querySelectorAll('.news');
-        for (let n = 0; n < newsNum.length; n++) {
-            const images = newsNum[n].querySelectorAll('img');
-            for (let i = 0; i < images.length; i++) {
-                images[i].src = '';
-            }
-            const headings = newsNum[n].querySelectorAll('h2');
-            for (let h = 0; h < headings.length; h++) {
-                headings[h].innerHTML = '';
-            }
-            const author = newsNum[n].querySelector('.newsDesc p:first-of-type');
-            author.innerHTML = '';
-            const date = newsNum[n].querySelector('.newsDesc p:last-of-type');
-            date.innerHTML = '';
-        }
+
         
         //let car = cars.find(car => car.color === "red" && car.type === "cabrio");
         //let redCars = cars.filter(car => car.color === "red");
 
-
+        defaultOrder()
+        const defaultOrder = () =>{
+            for (let n = 0; n < newsNum.length; n++) {
+                const images = newsNum[n].querySelectorAll('img');
+                for (let i = 0; i < images.length; i++) {
+                    images[i].src = tweets[i].image;
+                }
+                const headings = newsNum[n].querySelectorAll('h2');
+                for (let h = 0; h < headings.length; h++) {
+                    headings[h].innerHTML = tweets[i].header;
+                }
+                const author = newsNum[n].querySelector('.newsDesc p:first-of-type');
+                author.innerHTML = tweets[i].author;
+                const date = newsNum[n].querySelector('.newsDesc p:last-of-type');
+                date.innerHTML = tweets[i].date;
+            }
+        }
+        
+        
         const orderByLatest = () =>{
             
         }
