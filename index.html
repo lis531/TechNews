@@ -298,16 +298,16 @@
             for (let n = 0; n < newsNum.length; n++) {
                 const images = newsNum[n].querySelectorAll('img');
                 for (let i = 0; i < images.length; i++) {
-                    images[i].src = tweets[i].image;
+                    images[i].src = tweets[n].image;
                 }
                 const headings = newsNum[n].querySelectorAll('h2');
                 for (let h = 0; h < headings.length; h++) {
-                    headings[h].innerHTML = tweets[i].header;
+                    headings[h].innerHTML = tweets[n].header;
                 }
                 const author = newsNum[n].querySelector('.newsDesc p:first-of-type');
-                author.innerHTML = tweets[i].author;
+                author.innerHTML = tweets[n].author;
                 const date = newsNum[n].querySelector('.newsDesc p:last-of-type');
-                date.innerHTML = tweets[i].date;
+                date.innerHTML = tweets[n].date;
             }
         }
         defaultOrder()
