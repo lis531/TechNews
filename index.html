@@ -251,7 +251,40 @@
         const orderPopular = document.getElementById("popular")
         const orderImportant = document.getElementById("lastButton")
         const date = new Date();
-
+        
+        let tweets = [
+            {
+                image: "https:",
+                header: "",
+                author: "",
+                date: ""
+            },
+            {
+                image: "https:",
+                header: "",
+                author: "",
+                date: ""
+            },
+            {
+                image: "https:",
+                header: "",
+                author: "",
+                date: ""
+            },
+            {
+                image: "https:",
+                header: "",
+                author: "",
+                date: ""
+            },
+            {
+                image: "https:",
+                header: "",
+                author: "",
+                date: ""
+            }
+        ];
+        
         const newsNum = document.querySelectorAll('.news');
         for (let n = 0; n < newsNum.length; n++) {
             const images = newsNum[n].querySelectorAll('img');
@@ -267,10 +300,13 @@
             const date = newsNum[n].querySelector('.newsDesc p:last-of-type');
             date.innerHTML = '';
         }
+        
+        //let car = cars.find(car => car.color === "red" && car.type === "cabrio");
+        //let redCars = cars.filter(car => car.color === "red");
 
 
         const orderByLatest = () =>{
-
+            
         }
 
         const orderByPopular = () =>{
