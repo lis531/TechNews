@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+html{
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    scroll-behavior: smooth;
+    font-size: calc(0.5vw + 0.3vh);
+}
+h1{
+    font-size: 4rem;
+    text-align: center;
+}
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+.navBar{
+    display: flex;
+    position: fixed;
+    padding: 2vw;
+    flex-direction: column;
+    width: 18vw;
+    height: 100%;
+    gap: 2%;
+    background-color: rgb(163, 156, 156);
+    box-shadow: 0 0px 1rem black;
+}
+.navBar h2{
+    text-align: left;
+    font-size: 2.5rem;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-left: 20vw;
+}
+.order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8%;
+}
+.button{
+    border: none;
+    background-color: rgb(190, 190, 190);
+    width: 15vw;
+    height: 7vh;
+    min-height: 2rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.8rem;
+    transition: ease-in-out 0.5s;
+}
+.button:hover{
+    background-color: rgb(170, 170, 170);
+}
+#firstButton{
+    cursor: default;
+    border-top-left-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+    background-color: rgb(133, 133, 133);
+}
+#lastButton{
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+}
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.news{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.news h2{
+    width: 80%;
+    font-size: 1.8rem;
+}
+.news img{
+    margin: 1vw;
+    width: 220px;
+    height: 130px;
+    border-radius: 0.5rem;
+    box-shadow: 7px 7px 7px gray;
+}
+.newsDesc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10%
+}
+.lineBetween{
+    width: 80%;
+    height: 2px;
+    background-color: black;
+    border-radius: 100px;
+}
+.navBarButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+}
+.navBarButtons button{
+    border-radius: 1rem;
+    border: none;
+    /*background-color: inherit;*/
+    width: 17vw;
+    height: 6vh;
+    text-align: left;
+    text-indent: 1vw;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.5rem;
+    transition: ease-in-out 0.5s;
+    background-color: rgb(224, 215, 215);
+    text-decoration: inherit;
+    color: inherit;
+}
+.navBarButtons button:hover{
+    background-color: rgb(211, 201, 201);
+}
