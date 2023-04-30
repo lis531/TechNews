@@ -1,37 +1,43 @@
-const orderLatest = document.getElementById("latest")
-const orderPopular = document.getElementById("popular")
-const orderImportant = document.getElementById("lastButton")
 const date = new Date();
 
 let tweets = [];
 
 const newsNum = document.querySelectorAll('.news');
 
-const rssUrl = 'http://localhost:3000/rss';
+const rssUrl = 'https://www.wired.com/feed/';
 
 fetch(rssUrl)
-    .then(response => response.text())
-    .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
-    .then(data => {
-        const items = data.querySelectorAll('item');
-        items.forEach(item => {
-            const title = item.querySelector('title').textContent;
-            const link = item.querySelector('link').textContent;
-            const pubDate = item.querySelector('pubDate').textContent;
-            tweets.push({
-                image: "https://picsum.photos/200",
-                header: title,
-                author: "",
-                date: new Date(pubDate),
-                important: true, // set the 'important' property to true
-                likes: 0
-              });              
+  .then(response => response.text())
+  .then(str => {
+    return new window.DOMParser().parseFromString(str, 'text/xml');
+    console.log(str);
+  })
+  .then(data => {
+    const items = data.querySelectorAll('item');
+    items.forEach(item => {
+        const title = item.querySelector('title').textContent;
+        const link = item.querySelector('link').textContent;
+        const pubDate = new Date(item.querySelector('pubDate').textContent);
+        const description = item.querySelector('description').textContent;
+        //const creator = item.querySelector('dc\\:creator').textContent;
+        //const publisher = item.querySelector('dc\\:publisher').textContent;
+        console.log(item.querySelector('dc\\:creator'));
+        console.log(item.querySelector('dc\\:publisher'));
+        console.log(item.querySelector('media'));
+        //const thumbnail = item.querySelector('media\\:thumbnail').getAttribute('url');
+
+        tweets.push({
+            //image: thumbnail,
+            header: title,
+            //author: creator,
+            date: pubDate,
+            comments: description,
+            //publisher: publisher,
+            link: link
+            });              
         });
-        if(tweets.length > 0){
-            orderByLatest();
-        }
-    })
-    .catch(error => console.log(error));
+        orderByLatest(tweets);
+    });
 
 const defaultOrder = () =>{
     for (let n = 0; n < newsNum.length; n++) {
@@ -51,23 +57,27 @@ const defaultOrder = () =>{
 }
 
 const orderByLatest = () =>{
-    tweets.sort((a, b) => (a.date < b.date) ? 1 : -1)
+    tweets.sort((a, b) => (a.date < b.date) ? 1 : -1);
     defaultOrder();
 }
-
+  
 const orderByPopular = () =>{
-    tweets.sort((a, b) => (a.likes < b.likes) ? 1 : -1)
+    tweets.sort((a, b) => (a.likes < b.likes) ? 1 : -1);
     defaultOrder();
 }
-
+  
 const orderByImportant = () =>{
-    tweets.sort((a, b) => (a.important < b.important) ? 1 : -1)
+    tweets.sort((a, b) => (a.important < b.important) ? 1 : -1);
     defaultOrder();
 }
-
-orderLatest.addEventListener("click", orderByLatest)
-orderPopular.addEventListener("click", orderByPopular)
-orderImportant.addEventListener("click", orderByImportant)
+  
+const orderLatest = document.getElementById("latest");
+const orderPopular = document.getElementById("popular");
+const orderImportant = document.getElementById("lastButton");
+orderLatest.addEventListener("click", orderByLatest);
+orderPopular.addEventListener("click", orderByPopular);
+orderImportant.addEventListener("click", orderByImportant);
+  
 
 /* footer */
 const footer = document.getElementById("bottom")

@@ -5,7 +5,7 @@ const request = require('request');
 const app = express();
 app.use(cors());
 
-const rssUrl = 'https://www.msn.com/en-us/news/technology?parent-homid=12530&ocid=wisprss';
+const rssUrl = 'https://www.wired.com/feed/';
 
 app.get('/rss', (req, res) => {
   request(rssUrl).pipe(res);

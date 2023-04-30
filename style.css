@@ -55,7 +55,7 @@ body{
     min-height: 2rem;
     cursor: pointer;
     font-family: inherit;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     transition: ease-in-out 0.5s;
 }
 .button:hover{
@@ -78,23 +78,28 @@ body{
     flex-direction: column;
     margin-left: 5vw;
     margin-right: 5vw;
+    width: 50vw;
+    height: 17vh;
 }
 .news{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 .news h2{
-    width: 80%;
     font-size: 1.8rem;
+    text-align: left;
+    width: 30vw;
+    margin-top: 1.5vw;
+    margin-bottom: 0;
 }
 .news img{
-    margin: 1vw;
-    width: 220px;
-    height: 130px;
+    margin: 1.5vw;
+    width: 12vw;
+    height: 14vh;
     border-radius: 0.5rem;
     box-shadow: 7px 7px 7px gray;
 }
@@ -106,8 +111,8 @@ body{
     gap: 10%
 }
 .lineBetween{
-    width: 80%;
-    height: 2px;
+    width: 50%;
+    height: 0.155vh;
     background-color: black;
     border-radius: 100px;
 }
@@ -128,7 +133,7 @@ body{
     text-indent: 1vw;
     cursor: pointer;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     transition: ease-in-out 0.5s;
     background-color: rgb(224, 215, 215);
     text-decoration: inherit;
