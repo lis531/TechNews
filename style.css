@@ -1,36 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 html{
     font-family: 'Nunito', sans-serif;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
     background-color: lightgray;
     scroll-behavior: smooth;
     font-size: calc(0.5vw + 0.3vh);
-}
-h1{
-    font-size: 4rem;
-    text-align: center;
 }
 body{
     margin: 0;
     display: flex;
     flex-direction: row;
 }
-.navBar{
-    display: flex;
-    position: fixed;
-    padding: 2vw;
-    flex-direction: column;
-    width: 18vw;
-    height: 100%;
-    gap: 2%;
-    background-color: rgb(163, 156, 156);
-    box-shadow: 0 0px 1rem black;
-}
-.navBar h2{
+
+/*news*/
+.news a{
+    display: block;
+    font-size: 1.8rem;
     text-align: left;
-    font-size: 2.5rem;
+    width: 30vw;
+    margin-top: 1.5vw;
+    margin-bottom: 0;
+    font-weight: 900;
+    color: inherit;
+    text-decoration: inherit;
+}
+.news a:hover{
+    text-decoration: underline;
+}
+.container h1{
+    font-size: 4rem;
+    text-align: center;
 }
 .container{
     display: flex;
@@ -41,13 +39,82 @@ body{
     height: 100%;
     margin-left: 20vw;
 }
+.switch{
+    position: fixed;
+    font-size: 3rem;
+    top: 2vh;
+    right: 2vw;
+}
+
+/*navBar*/
+.navBar{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 20vw;
+    height: 100%;
+    gap: 2%;
+    background-color: rgb(163, 156, 156);
+    box-shadow: 0 0px 1rem black;
+}
+.navBar h2{
+    text-align: left;
+    font-size: 2.5rem;
+}
+.navBarTop{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    gap: 1vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    transition: ease-in-out 0.5s;
+    padding: 2vw;
+}
+.navBar img{
+    position: fixed;
+    bottom: 0;
+    width: 20vw;
+    height: 20vw;
+}
+.navBarButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    padding: 2vw;
+}
+.navBarButtons a{
+    border-radius: 1rem;
+    border: none;
+    width: 17vw;
+    height: 6vh;
+    text-align: left;
+    text-indent: 1vw;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.7rem;
+    transition: ease-in-out 0.5s;
+    background-color: rgb(224, 215, 215);
+    text-decoration: inherit;
+    color: inherit;
+}
+.navBarButtons a:hover{
+    background-color: rgb(211, 201, 201);
+}
+
+/*order*/
 .order{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.8%;
+    margin-bottom: 5vh;
 }
 .button{
+    
     border: none;
     background-color: rgb(190, 190, 190);
     width: 15vw;
@@ -71,6 +138,8 @@ body{
     border-top-right-radius: 3rem;
     border-bottom-right-radius: 3rem;
 }
+
+/*news*/
 .content{
     display: flex;
     align-items: center;
@@ -86,15 +155,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-.news h2{
-    font-size: 1.8rem;
-    text-align: left;
-    width: 30vw;
-    margin-top: 1.5vw;
-    margin-bottom: 0;
+    transition: ease-in-out 0.5s;
 }
 .news img{
     margin: 1.5vw;
@@ -102,6 +163,9 @@ body{
     height: 14vh;
     border-radius: 0.5rem;
     box-shadow: 7px 7px 7px gray;
+}
+.news:hover{
+    scale: 1.15;
 }
 .newsDesc{
     display: flex;
@@ -115,30 +179,15 @@ body{
     height: 0.155vh;
     background-color: black;
     border-radius: 100px;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
 }
-.navBarButtons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2vh;
-}
-.navBarButtons button{
-    border-radius: 1rem;
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 200,
+    'opsz' 48;
     border: none;
-    /*background-color: inherit;*/
-    width: 17vw;
-    height: 6vh;
-    text-align: left;
-    text-indent: 1vw;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1.7rem;
-    transition: ease-in-out 0.5s;
-    background-color: rgb(224, 215, 215);
-    text-decoration: inherit;
-    color: inherit;
-}
-.navBarButtons button:hover{
-    background-color: rgb(211, 201, 201);
+    background-color: inherit;
 }

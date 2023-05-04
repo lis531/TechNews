@@ -4,13 +4,12 @@ let tweets = [];
 
 const newsNum = document.querySelectorAll('.news');
 
-const rssUrl = 'https://www.wired.com/feed/';
+const rssUrl = 'https://www.wired.com/feed/category/science/latest/rss';
 
 fetch(rssUrl)
   .then(response => response.text())
   .then(str => {
     return new window.DOMParser().parseFromString(str, 'text/xml');
-    console.log(str);
   })
   .then(data => {
     const items = data.querySelectorAll('item');
@@ -19,20 +18,17 @@ fetch(rssUrl)
         const link = item.querySelector('link').textContent;
         const pubDate = new Date(item.querySelector('pubDate').textContent);
         const description = item.querySelector('description').textContent;
-        //const creator = item.querySelector('dc\\:creator').textContent;
-        //const publisher = item.querySelector('dc\\:publisher').textContent;
-        console.log(item.querySelector('dc\\:creator'));
-        console.log(item.querySelector('dc\\:publisher'));
-        console.log(item.querySelector('media'));
-        //const thumbnail = item.querySelector('media\\:thumbnail').getAttribute('url');
+        const creator = item.querySelector('creator').textContent;
+        const publisher = item.querySelector('publisher').textContent;
+        const thumbnail = item.querySelector('thumbnail').getAttribute('url');
 
         tweets.push({
-            //image: thumbnail,
+            image: thumbnail,
             header: title,
-            //author: creator,
+            author: creator,
             date: pubDate,
-            comments: description,
-            //publisher: publisher,
+            description: description,
+            publisher: publisher,
             link: link
             });              
         });
@@ -45,9 +41,10 @@ const defaultOrder = () =>{
         for (let i = 0; i < images.length; i++) {
             images[i].src = tweets[n].image;
         }
-        const headings = newsNum[n].querySelectorAll('h2');
+        const headings = newsNum[n].querySelectorAll('a');
         for (let h = 0; h < headings.length; h++) {
             headings[h].innerHTML = tweets[n].header;
+            headings[h].href = tweets[n].link;
         }
         const author = newsNum[n].querySelector('.newsDesc p:first-of-type');
         author.innerHTML = tweets[n].author;
@@ -85,3 +82,16 @@ footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 
 /* other */
 const home = document.getElementById("home");
+
+const theme = document.getElementById("switch");
+
+const changeTheme = () =>{
+    //theme.innerHTML = "toggle_off";
+    if (theme.innerHTML == "toggle_off"){
+        theme.innerHTML = "toggle_on";
+    }else{
+        theme.innerHTML = "toggle_off";
+    }
+}
+
+theme.addEventListener("click", changeTheme);
