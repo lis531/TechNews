@@ -1,4 +1,4 @@
-@import url('ht--text-colorly=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 :root{
     --background-color: #202634;
     --button-color: #283044;
@@ -11,11 +11,14 @@
     --box-shadow-color: #1b1f24;
 }
 html{
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Arvo', serif;
     color: var(--text-color);
     scroll-behavior: smooth;
     font-size: calc(0.5vw + 0.3vh);
     background-color: var(--background-color);
+    scroll-behavior: smooth;
+    scrollbar-color: var(--background-color);
+    scrollbar-width: 4vw;
 }
 body{
     margin: 0;
@@ -46,24 +49,18 @@ body{
     flex-direction: column;
     width: 20vw;
     height: 100%;
-    gap: 2%;
+    gap: 6%;
     background-color: var(--navBar-color);
     box-shadow: 0 0px 1rem black;
 }
 .navBar h2{
-    text-align: left;
-    font-size: 2.5rem;
-}
-.navBarTop{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: row;
     gap: 1vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
     transition: ease-in-out 0.5s;
     padding: 2vw;
+    text-align: left;
+    font-size: 3rem;
 }
 .navBarButtons{
     display: flex;
@@ -75,13 +72,12 @@ body{
 .navBarButtons a, .navBarButtons button{
     width: 17vw;
     height: 6vh;
-    text-indent: 2vw;
+    text-indent: 1vw;
     text-align: left;
     cursor: pointer;
     font-size: 1.7rem;
     transition: ease-in-out 0.5s;
     background-color: var(--button-color);
-    font-family: inherit;
     border: none;
     border-radius: 1rem;
     color: inherit;
@@ -90,7 +86,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: left;
-    font-family: inherit;
     text-decoration: inherit;
 }
 .navBarButtons button{
@@ -98,6 +93,11 @@ body{
 }
 .navBarButtons a:hover, .navBarButtons button:hover{
     background-color: var(--button-hover-color);
+}
+.icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    filter: invert(100%);
 }
 
 /*order*/
@@ -116,7 +116,6 @@ body{
     padding: 0;
     min-height: 2rem;
     cursor: pointer;
-    font-family: inherit;
     font-size: 2.2rem;
     transition: ease-in-out 0.5s;
     color: inherit;
