@@ -19,6 +19,7 @@ html{
     scroll-behavior: smooth;
     scrollbar-color: var(--background-color);
     scrollbar-width: 4vw;
+    transition: ease-in-out 0.2s;
 }
 body{
     margin: 0;
