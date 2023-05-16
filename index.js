@@ -142,8 +142,26 @@ const theme = document.getElementById('switch');
 const changeTheme = () => {
     if (theme.innerHTML == 'toggle_off') {
         theme.innerHTML = 'toggle_on';
+        document.documentElement.style.setProperty('--background-color', '#202634')
+        document.documentElement.style.setProperty('--button-color', '#283044')
+        document.documentElement.style.setProperty('--order-button-color', '#283044')
+        document.documentElement.style.setProperty('--button-hover-color', '#414959')
+        document.documentElement.style.setProperty('--order-button-hover-color', '#414959')
+        document.documentElement.style.setProperty('--darker-button-color', '#232833')
+        document.documentElement.style.setProperty('--text-color', '#FFFAFF')
+        document.documentElement.style.setProperty('--navBar-color', '#283044')
+        document.documentElement.style.setProperty('--box-shadow-color', '#1b1f24')
     } else {
         theme.innerHTML = 'toggle_off';
+        document.documentElement.style.setProperty('--background-color', '#FFFFFF')
+        document.documentElement.style.setProperty('--button-color', '#F0F0F0')
+        document.documentElement.style.setProperty('--order-button-color', '#F0F0F0')
+        document.documentElement.style.setProperty('--button-hover-color', '#E5E5E5')
+        document.documentElement.style.setProperty('--order-button-hover-color', '#E5E5E5')
+        document.documentElement.style.setProperty('--darker-button-color', '#D9D9D9')
+        document.documentElement.style.setProperty('--text-color', '#000000')
+        document.documentElement.style.setProperty('--navBar-color', '#F0F0F0')
+        document.documentElement.style.setProperty('--box-shadow-color', '#C2C2C2')        
     }
 };
 
