@@ -165,6 +165,7 @@ body{
     align-items: center;
     justify-content: center;
     transition: ease-in-out 0.5s;
+    border-bottom: 0.1rem solid var(--order-button-color);
 }
 .news a{
     display: block;
@@ -196,14 +197,6 @@ body{
     justify-content: center;
     flex-direction: row;
     gap: 10%
-}
-.lineBetween{
-    width: 50%;
-    height: 0.155vh;
-    background-color: var(--order-button-color);
-    border-radius: 100px;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
 }
 .material-symbols-outlined {
     font-variation-settings:
