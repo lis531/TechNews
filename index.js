@@ -3,8 +3,8 @@ const date = new Date();
 let news = [];
 let numberOfNews = 0;
 
-const lineBetween = document.querySelectorAll('.lineBetween');
-const container = document.getElementsByClassName("container")
+const lineBetween = document.querySelectorAll(".lineBetween");
+const container = document.getElementById("container")
 
 let rssUrls = [
     'https://www.wired.com/feed/category/science/robots/rss',
