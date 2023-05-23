@@ -2,9 +2,10 @@ const date = new Date();
 
 let news = [];
 let numberOfNews = 0;
+let previousNews = "";
 
 const lineBetween = document.querySelectorAll(".lineBetween");
-const container = document.getElementById("home")
+const container = document.getElementById("newsDiv")
 
 let rssUrls = [
     'https://www.wired.com/feed/category/science/robots/rss',
@@ -29,6 +30,7 @@ const fetchRssData = (rssUrl) => {
             const publisher = item.querySelector('publisher').textContent;
             const thumbnail = item.querySelector('thumbnail').getAttribute('url');
             numberOfNews += 1;
+            console.log(numberOfNews)
             news.push({
                 image: thumbnail,
                 header: title,
@@ -39,56 +41,50 @@ const fetchRssData = (rssUrl) => {
                 link: link,
             });
         });
-        orderByLatest(news);
+        orderByLatest();
     });
 };
-  
 
 const defaultOrder = () => {
-    for (let n = 0; n < 40; n++) {
-        const newsContent = document.createElement("div")
-        newsContent.classList.add("content")
-        container.append(newsContent)
-        if (n < news.length) {
-
-            const image = document.createElement("img");
-            image.append(newsContent)
-            image.src = news[n].image;
-
-            const header = document.createElement("a");
-            header.append(newsContent)
-            header.innerHTML = news[n].header;
-            header.href = news[n].link;
-
-            const author = document.createElement("p");
-            author.append(newsContent)
-
-            author.innerHTML = 'Author ' + news[n].author;
-            const date = document.createElement("p");
-
-            date.append(newsContent)
-            date.innerHTML = 'Date ' + news[n].date.toLocaleDateString('pl-PL');
-
-            newsContent.style.display = 'flex';
-            //lineBetween.style.display = 'flex';
-        } else {
-            newsContent.style.display = 'none';
-            //lineBetween.style.display = 'none';
+    for (let n = 0; n < numberOfNews; n++) {
+        if(previousNews !== news[n].header){
+            container.innerHTML += `
+            <div class="content">
+                <div class="news">
+                    <img src="${news[n].image}" alt="">
+                    <div>
+                        <a href="${news[n].link}">${news[n].header}</a>
+                        <div class="newsInfo">
+                            <p>Author ${news[n].author}</p>
+                            <p>Added ${news[n].date.toLocaleDateString('pl-PL')}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lineBetween"></div>`
+            previousNews = news[n].header;
+        }
+        else{
+            previousNews = news[n].header;
         }
     }
 };
 
 const orderByLatest = () => {
+    container.innerHTML = "";
+    console.log(container.innerHTML)
     news.sort((a, b) => (a.date < b.date ? 1 : -1));
     defaultOrder();
 };
 
 const orderByOldest = () => {
+    container.innerHTML = "";    
     news.sort((a, b) => (a.date > b.date ? 1 : -1));
     defaultOrder();
 };
 
 const orderByName = () => {
+    container.innerHTML = "";
     news.sort((a, b) => (a.header > b.header ? 1 : -1));
     defaultOrder();
 };
