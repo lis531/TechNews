@@ -1,9 +1,8 @@
 const date = new Date();
 
 let news = [];
+let numberOfNews = 0;
 
-const newsNum = document.querySelectorAll('.news');
-const newsContainer = document.querySelectorAll('.content');
 const lineBetween = document.querySelectorAll('.lineBetween');
 
 let rssUrls = [
@@ -28,7 +27,7 @@ const fetchRssData = (rssUrl) => {
             const creator = item.querySelector('creator').textContent;
             const publisher = item.querySelector('publisher').textContent;
             const thumbnail = item.querySelector('thumbnail').getAttribute('url');
-      
+            numberOfNews += 1;
             news.push({
                 image: thumbnail,
                 header: title,
@@ -45,26 +44,35 @@ const fetchRssData = (rssUrl) => {
   
 
 const defaultOrder = () => {
-    for (let n = 0; n < newsNum.length; n++) {
+    for (let n = 0; n < 40; n++) {
+        const newsContainer = document.createElement("div")
+        newsContainer.classList.add("container")
+        document.body.append(newsContainer)
         if (n < news.length) {
-            const images = newsNum[n].querySelectorAll('img');
-            for (let i = 0; i < images.length; i++) {
-                images[i].src = news[n].image;
-            }
-            const headings = newsNum[n].querySelectorAll('a');
-            for (let h = 0; h < headings.length; h++) {
-                headings[h].innerHTML = news[n].header;
-                headings[h].href = news[n].link;
-            }
-            const author = newsNum[n].querySelector('.newsInfo p:first-of-type');
+
+            const image = document.createElement("img");
+            image.append(newsContainer)
+            image.src = news[n].image;
+
+            const header = document.createElement("a");
+            header.append(newsContainer)
+            header.innerHTML = news[n].header;
+            header.href = news[n].link;
+
+            const author = document.createElement("p");
+            author.append(newsContainer)
+
             author.innerHTML = 'Author ' + news[n].author;
-            const date = newsNum[n].querySelector('.newsInfo p:last-of-type');
+            const date = document.createElement("p");
+
+            date.append(newsContainer)
             date.innerHTML = 'Date ' + news[n].date.toLocaleDateString('pl-PL');
-            newsContainer[n].style.display = 'flex';
-            lineBetween[n].style.display = 'flex';
+
+            newsContainer.style.display = 'flex';
+            //lineBetween.style.display = 'flex';
         } else {
-            newsContainer[n].style.display = 'none';
-            lineBetween[n].style.display = 'none';
+            newsContainer.style.display = 'none';
+            //lineBetween.style.display = 'none';
         }
     }
 };
