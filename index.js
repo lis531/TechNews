@@ -4,6 +4,7 @@ let news = [];
 let numberOfNews = 0;
 
 const lineBetween = document.querySelectorAll('.lineBetween');
+const container = document.getElementsByClassName("container")
 
 let rssUrls = [
     'https://www.wired.com/feed/category/science/robots/rss',
@@ -45,33 +46,33 @@ const fetchRssData = (rssUrl) => {
 
 const defaultOrder = () => {
     for (let n = 0; n < 40; n++) {
-        const newsContainer = document.createElement("div")
-        newsContainer.classList.add("container")
-        document.body.append(newsContainer)
+        const newsContent = document.createElement("div")
+        newsContent.classList.add("content")
+        container.append(newsContent)
         if (n < news.length) {
 
             const image = document.createElement("img");
-            image.append(newsContainer)
+            image.append(newsContent)
             image.src = news[n].image;
 
             const header = document.createElement("a");
-            header.append(newsContainer)
+            header.append(newsContent)
             header.innerHTML = news[n].header;
             header.href = news[n].link;
 
             const author = document.createElement("p");
-            author.append(newsContainer)
+            author.append(newsContent)
 
             author.innerHTML = 'Author ' + news[n].author;
             const date = document.createElement("p");
 
-            date.append(newsContainer)
+            date.append(newsContent)
             date.innerHTML = 'Date ' + news[n].date.toLocaleDateString('pl-PL');
 
-            newsContainer.style.display = 'flex';
+            newsContent.style.display = 'flex';
             //lineBetween.style.display = 'flex';
         } else {
-            newsContainer.style.display = 'none';
+            newsContent.style.display = 'none';
             //lineBetween.style.display = 'none';
         }
     }
