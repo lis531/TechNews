@@ -4,7 +4,7 @@ let news = [];
 let numberOfNews = 0;
 
 const lineBetween = document.querySelectorAll(".lineBetween");
-const container = document.getElementById("container")
+const container = document.getElementById("home")
 
 let rssUrls = [
     'https://www.wired.com/feed/category/science/robots/rss',
