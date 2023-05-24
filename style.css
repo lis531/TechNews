@@ -167,7 +167,7 @@ body{
     transition: ease-in-out 0.5s;
 }
 .lineBetween{
-    width: 50%;
+    width: 60%;
     height: 0.155vh;
     background-color: var(--order-button-color);
     border-radius: 100px;
@@ -204,6 +204,12 @@ body{
     justify-content: center;
     flex-direction: row;
     gap: 10%
+}
+#newsDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .material-symbols-outlined {
     font-variation-settings:
