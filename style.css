@@ -4,27 +4,32 @@
     --button-color: #283044;
     --order-button-color: #283044;
     --button-hover-color: #414959;
-    --order-button-hover-color: #414959;
-    --darker-button-color: #232833;
+    --darker-button-color: #131925;
     --text-color: #FFFAFF;
     --navBar-color: #283044;
     --box-shadow-color: #1b1f24;
+    --filter-val: 100%;
 }
 html{
     font-family: 'Arvo', serif;
     color: var(--text-color);
     scroll-behavior: smooth;
     font-size: calc(0.5vw + 0.3vh);
-    background-color: var(--background-color);
     scroll-behavior: smooth;
-    scrollbar-color: var(--background-color);
-    scrollbar-width: 4vw;
-    transition: ease-in-out 0.2s;
+    overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+    width: .5rem
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--darker-button-color)
 }
 body{
     margin: 0;
     display: flex;
     flex-direction: row;
+    background-color: var(--background-color);
+    transition: ease-in-out 0.5s;
 }
 
 /*top*/
@@ -50,16 +55,16 @@ body{
     flex-direction: column;
     width: 20vw;
     height: 100%;
-    gap: 6%;
+    gap: 4%;
     background-color: var(--navBar-color);
     box-shadow: 0 0px 1rem black;
+    transition: ease-in-out 0.5s;
+    transition-property: background-color;
 }
 .navBar h2{
     gap: 1vw;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-    transition: ease-in-out 0.5s;
     padding: 2vw;
+    padding-bottom: 0;
     text-align: left;
     font-size: 3rem;
 }
@@ -78,6 +83,7 @@ body{
     cursor: pointer;
     font-size: 1.7rem;
     transition: ease-in-out 0.5s;
+    transition-property: background-color;
     background-color: var(--button-color);
     border: none;
     border-radius: 1rem;
@@ -96,9 +102,11 @@ body{
     background-color: var(--button-hover-color);
 }
 .icon{
+    padding-left: 1vw;
     width: 2.5rem;
     height: 2.5rem;
-    filter: invert(100%);
+    filter: invert(var(--filter-val));
+    transition: ease-in-out 0.5s;
 }
 
 /*order*/
@@ -118,8 +126,9 @@ body{
     min-height: 2rem;
     cursor: pointer;
     font-size: 2.2rem;
-    transition: ease-in-out 0.5s;
     color: inherit;
+    transition: ease-in-out 0.5s;
+    transition-property: background-color;
 }
 .button:hover{
     background-color: var(--order-button-hover-color);
@@ -165,21 +174,30 @@ body{
     align-items: center;
     justify-content: center;
     transition: ease-in-out 0.5s;
+    transition-property: scale;
+    z-index: 10;
 }
 .lineBetween{
     width: 60%;
-    height: 0.155vh;
+    height: 0.15vh;
     background-color: var(--order-button-color);
     border-radius: 100px;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
+    transition: ease-in-out 0.5s;
+}
+.navBar .lineBetween{
+    background-color: var(--button-hover-color);
+    margin-top: .3vh;
+    margin-bottom: .3vh;
+    width: 65%;
 }
 .news a{
     display: block;
     font-size: 1.8rem;
     text-align: left;
     width: 30vw;
-    margin-top: 1.5vw;
+    margin-top: .5vh;
     margin-bottom: 0;
     font-weight: 900;
     color: inherit;
@@ -194,6 +212,8 @@ body{
     height: 14vh;
     border-radius: 0.5rem;
     box-shadow: 7px 7px 7px var(--box-shadow-color);
+    transition: ease-in-out 0.5s;
+    transition-property: box-shadow;
 }
 .news:hover{
     scale: 1.15;
@@ -201,9 +221,31 @@ body{
 .newsInfo{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     flex-direction: row;
     gap: 10%
+}
+.news .description {
+    display: inline-block;
+    width: 30vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    animation: typing 1.5s steps(30, end);
+    margin-bottom: 0;
+}
+
+@keyframes typing {
+    0% {
+        width: 0vw;
+    }
+    100% {
+        width: 30vw;
+    }
+}
+
+.news:hover .description{
+    white-space: normal;
 }
 #newsDiv{
     display: flex;
@@ -219,4 +261,18 @@ body{
     'opsz' 48;
     border: none;
     background-color: inherit;
+}
+.animate {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
 }
