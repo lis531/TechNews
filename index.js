@@ -38,17 +38,16 @@ const fetchRssData = async (rssUrl) => {
         });
     });
     orderByLatest();
-
-    const newsDivs = document.querySelectorAll('.news');
-        newsDivs.forEach(div => {
-            observer.observe(div);
-    });
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            if(entry.target.classList.contains('description')){
+                entry.target.classList.add('text-animation');
+            }else{
+                entry.target.classList.add('animate');
+            }            
             observer.unobserve(entry.target);
         }
     });
@@ -73,6 +72,14 @@ const defaultOrder = () => {
             </div>
             <div class="lineBetween"></div>`
             previousNews = news[n].header;
+            const newsDivs = document.querySelectorAll('.news');
+            newsDivs.forEach(div => {
+                observer.observe(div);
+            });
+            const descriptionDivs = document.querySelectorAll('.description')
+            descriptionDivs.forEach(description => {
+                observer.observe(description);
+            });
         }
         else{
             previousNews = news[n].header;
