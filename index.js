@@ -50,7 +50,6 @@ const observer = new IntersectionObserver((entries, observer) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
             observer.unobserve(entry.target);
-            console.log('intersecting');
         }
     });
 });
