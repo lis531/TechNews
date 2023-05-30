@@ -228,22 +228,9 @@ body{
 .news .description {
     display: inline-block;
     width: 30vw;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    animation: typing 1.5s steps(30, end);
+    visibility: hidden;
     margin-bottom: 0;
 }
-
-@keyframes typing {
-    0% {
-        width: 0vw;
-    }
-    100% {
-        width: 30vw;
-    }
-}
-
 .news:hover .description{
     white-space: normal;
 }
@@ -274,5 +261,20 @@ body{
     to {
         opacity: 1;
         transform: translateY(0)
+    }
+}
+.text-animation{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    animation: typing 1.5s steps(30, end);
+    visibility: visible !important;
+}
+@keyframes typing {
+    0% {
+        width: 0vw;
+    }
+    100% {
+        width: 30vw;
     }
 }
