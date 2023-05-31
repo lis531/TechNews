@@ -122,12 +122,17 @@ const all = document.getElementById('all');
 const space = document.getElementById('space');
 const ai = document.getElementById('ai');
 const robots = document.getElementById('robots');
+
+const backToDefault = () =>{
+    all.style.setProperty('background-color', 'inherit');
+    ai.style.setProperty('background-color', 'inherit');
+    all.style.setProperty('background-color', 'inherit');
+    robots.style.setProperty('background-color', 'inherit');
+}
 all.style.setProperty('background-color', 'var(--button-hover-color)');
 all.addEventListener('click', () => {
+    backToDefault()
     all.style.setProperty('background-color', 'var(--button-hover-color)');
-    ai.style.setProperty('background-color', 'inherit');
-    space.style.setProperty('background-color', 'inherit');
-    robots.style.setProperty('background-color', 'inherit');
     rssUrls = [
         'https://www.wired.com/feed/category/science/robots/rss',
         'https://www.wired.com/feed/tag/ai/latest/rss',
@@ -140,31 +145,24 @@ all.addEventListener('click', () => {
 });
   
 space.addEventListener('click', () => {
+    backToDefault()
     space.style.setProperty('background-color', 'var(--button-hover-color)');
-    ai.style.setProperty('background-color', 'inherit');
-    all.style.setProperty('background-color', 'inherit');
-    robots.style.setProperty('background-color', 'inherit');
     const rssUrl = 'https://www.wired.com/feed/category/science/space/rss';
     news = [];
     fetchRssData(rssUrl);
 });
   
 ai.addEventListener('click', () => {
+    backToDefault()
     ai.style.setProperty('background-color', 'var(--button-hover-color)');
-    robots.style.setProperty('background-color', 'inherit');
-    space.style.setProperty('background-color', 'inherit');
-    all.style.setProperty('background-color', 'inherit');
     const rssUrl = 'https://www.wired.com/feed/tag/ai/latest/rss';
     news = [];
     fetchRssData(rssUrl);
 });
   
 robots.addEventListener('click', () => {
+    backToDefault()
     robots.style.setProperty('background-color', 'var(--button-hover-color)');
-    ai.style.setProperty('background-color', 'inherit');
-    space.style.setProperty('background-color', 'inherit');
-    all.style.setProperty('background-color', 'inherit');
-
     const rssUrl = 'https://www.wired.com/feed/category/science/robots/rss';
     news = [];
     fetchRssData(rssUrl);
@@ -178,8 +176,8 @@ footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 const theme = document.getElementById('switch');
 
 const changeTheme = () => {
-    if (theme.innerHTML == 'toggle_off') {
-        theme.innerHTML = 'toggle_on';
+    if (theme.image.src == 'toggle_off.svg') {
+        theme.image.src = 'toggle_off.svg';
         document.documentElement.style.setProperty('--background-color', '#202634')
         document.documentElement.style.setProperty('--button-color', '#283044')
         document.documentElement.style.setProperty('--order-button-color', '#283044')
@@ -191,7 +189,7 @@ const changeTheme = () => {
         document.documentElement.style.setProperty('--box-shadow-color', '#1b1f24')
         document.documentElement.style.setProperty('--filter-val', '100%')
     } else {
-        theme.innerHTML = 'toggle_off';
+        theme.image.src = 'toggle_off.svg';
         document.documentElement.style.setProperty('--background-color', '#FFFFFF')
         document.documentElement.style.setProperty('--button-color', '#F0F0F0')
         document.documentElement.style.setProperty('--order-button-color', '#F0F0F0')
