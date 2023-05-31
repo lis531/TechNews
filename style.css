@@ -46,6 +46,11 @@ body{
     font-size: 4rem;
     top: inherit;
     right: 3vw;
+    border: none;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*navBar*/
