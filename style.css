@@ -240,15 +240,6 @@ body{
     justify-content: center;
     flex-direction: column;
 }
-.material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 200,
-    'opsz' 48;
-    border: none;
-    background-color: inherit;
-}
 .animate {
     animation: fadeIn 0.5s ease-out forwards;
 }
