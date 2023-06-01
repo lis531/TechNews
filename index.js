@@ -174,10 +174,10 @@ footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 
 /* other */
 const theme = document.getElementById('switch');
-
+const img = theme.getElementsByTagName('img')[0].getAttribute('src');
 const changeTheme = () => {
-    if (theme.image.src == 'toggle_off.svg') {
-        theme.image.src = 'toggle_off.svg';
+    if (img == 'toggle_off.svg') {
+        img = 'toggle_on.svg';
         document.documentElement.style.setProperty('--background-color', '#202634')
         document.documentElement.style.setProperty('--button-color', '#283044')
         document.documentElement.style.setProperty('--order-button-color', '#283044')
@@ -189,7 +189,7 @@ const changeTheme = () => {
         document.documentElement.style.setProperty('--box-shadow-color', '#1b1f24')
         document.documentElement.style.setProperty('--filter-val', '100%')
     } else {
-        theme.image.src = 'toggle_off.svg';
+        img = 'toggle_off.svg';
         document.documentElement.style.setProperty('--background-color', '#FFFFFF')
         document.documentElement.style.setProperty('--button-color', '#F0F0F0')
         document.documentElement.style.setProperty('--order-button-color', '#F0F0F0')
