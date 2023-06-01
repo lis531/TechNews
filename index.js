@@ -174,8 +174,8 @@ footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 
 /* other */
 const theme = document.getElementById('switch');
-const img = theme.getElementsByTagName('img')[0].getAttribute('src');
 const changeTheme = () => {
+let img = theme.getElementsByTagName('img')[0].getAttribute('src');
     if (img == 'toggle_off.svg') {
         img = 'toggle_on.svg';
         document.documentElement.style.setProperty('--background-color', '#202634')
