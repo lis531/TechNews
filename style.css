@@ -228,13 +228,14 @@ body{
     align-items: center;
     justify-content: left;
     flex-direction: row;
-    gap: 10%
+    gap: 10%;
 }
 .news .description {
     display: inline-block;
     width: 30vw;
     visibility: hidden;
     margin-bottom: 0;
+    font-size: 1.2rem;
 }
 .news:hover .description{
     white-space: normal;
