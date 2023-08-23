@@ -24,7 +24,6 @@ const fetchRssData = async (rssUrl) => {
         const pubDate = new Date(item.querySelector('pubDate').textContent);
         const description = item.querySelector('description').textContent;
         const creator = item.querySelector('creator').textContent;
-        const publisher = item.querySelector('publisher').textContent;
         const thumbnail = item.querySelector('thumbnail').getAttribute('url');
         numberOfNews += 1;
         news.push({
@@ -33,8 +32,7 @@ const fetchRssData = async (rssUrl) => {
             author: creator,
             date: pubDate,
             description: description,
-            publisher: publisher,
-            link: link,
+            link: link
         });
     });
     orderByLatest();
@@ -126,8 +124,8 @@ const robots = document.getElementById('robots');
 const backToDefault = () =>{
     all.style.setProperty('background-color', 'inherit');
     ai.style.setProperty('background-color', 'inherit');
-    all.style.setProperty('background-color', 'inherit');
     robots.style.setProperty('background-color', 'inherit');
+    space.style.setProperty('background-color', 'inherit');
 }
 all.style.setProperty('background-color', 'var(--button-hover-color)');
 all.addEventListener('click', () => {
@@ -176,7 +174,6 @@ footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 const theme = document.getElementById('switch');
 const changeTheme = () => {
     const img = theme.getElementsByTagName('img')[0];
-    console.log(img.src)
     if (img.src.includes('toggle_off.svg')) {
         img.src = 'toggle_on.svg';
         document.documentElement.style.setProperty('--background-color', '#202634')
@@ -204,27 +201,26 @@ const changeTheme = () => {
     }
 };
 
-theme.addEventListener('click', changeTheme);
-
-/*const input = document.getElementById('newsInput');
-const submit = document.getElementById('submit');
-const remove = document.getElementById('remove');
-
-const addNews = () => {
-    if (input.value !== '') {
-        localStorage.setItem('rssUrls', JSON.stringify(rssUrls));
-        rssUrls.push(localStorage.getItem('rssUrls'));
-        fetchRssData(input.value);
-        input.value = '';
+const changeBarStatus = () => {
+    if(document.getElementsByClassName('navBar')[0].style.display == 'flex'){
+        document.getElementsByClassName('navBar')[0].style.display = 'none';
+        document.getElementsByClassName('order')[0].style.display = 'flex';
+        if(theme.getElementsByTagName('img')[0].src.includes('toggle_off.svg'))
+            document.documentElement.style.setProperty('--background-color', '#FFFFFF');
+        else
+            document.documentElement.style.setProperty('--background-color', '#202634');
+        document.getElementById('navigation').style.bgColor = 'flex';
+        document.documentElement.style.overflowY = 'scroll';
     }
-};
-
-const removeNews = () => {
-    rssUrls = [];
-    localStorage.setItem('rssUrls', JSON.stringify(rssUrls));
-    news = [];
-    container.innerHTML = '';
+    else{
+        document.getElementsByClassName('navBar')[0].style.display = 'flex';
+        document.getElementsByClassName('order')[0].style.display = 'none';
+        if(theme.getElementsByTagName('img')[0].src.includes('toggle_off.svg'))
+            document.documentElement.style.setProperty('--background-color', '#FFFFFF');
+        else
+            document.documentElement.style.setProperty('--background-color', '#283044');
+        document.getElementById('navigation').style.display = 'none';
+        document.documentElement.style.overflowY = 'hidden';
+    }
 }
-
-submit.addEventListener('click', addNews);
-remove.addEventListener('click', removeNews);*/
+theme.addEventListener('click', changeTheme);

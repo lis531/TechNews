@@ -15,7 +15,6 @@ html{
     color: var(--text-color);
     scroll-behavior: smooth;
     font-size: calc(0.5vw + 0.3vh);
-    scroll-behavior: smooth;
     overflow-y: scroll;
 }
 body::-webkit-scrollbar {
@@ -36,7 +35,6 @@ body{
 .top{
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
     align-items: center;
     justify-content: center;
 }
@@ -44,7 +42,6 @@ body{
     color: inherit;
     position: absolute;
     font-size: 4rem;
-    top: inherit;
     right: 3vw;
     border: none;
     background-color: inherit;
@@ -83,7 +80,6 @@ body{
 .navBarButtons a, .navBarButtons button{
     width: 17vw;
     height: 6vh;
-    text-indent: 1vw;
     text-align: left;
     cursor: pointer;
     font-size: 1.7rem;
@@ -95,6 +91,7 @@ body{
     color: inherit;
 }
 .navBarButtons a{
+    text-indent: 1vw;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -107,7 +104,6 @@ body{
     background-color: var(--button-hover-color);
 }
 .icon{
-    padding-left: 1vw;
     width: 2.5rem;
     height: 2.5rem;
     filter: invert(var(--filter-val));
@@ -120,7 +116,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 0.8%;
-    margin-bottom: 5vh;
+    padding: 1vh;
 }
 .button{
     border: none;
@@ -170,7 +166,6 @@ body{
     flex-direction: column;
     margin-left: 5vw;
     margin-right: 5vw;
-    width: 50vw;
     height: 17vh;
 }
 .news{
@@ -213,8 +208,8 @@ body{
 }
 .news img{
     margin: 1.5vw;
-    width: 12vw;
-    height: 14vh;
+    width: 18rem;
+    height: 11rem;
     border-radius: 0.5rem;
     box-shadow: 7px 7px 7px var(--box-shadow-color);
     transition: ease-in-out 0.5s;
@@ -245,6 +240,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 }
 .animate {
     animation: fadeIn 0.5s ease-out forwards;
@@ -273,5 +269,94 @@ body{
     }
     100% {
         width: 30vw;
+    }
+}
+#barSwitch{
+    display: none;
+}
+@media only screen and (orientation: portrait) {
+    html{
+        font-size: 0.7rem;
+    }
+    .top{
+        position: fixed;
+        top: 0vw;
+        z-index: 110;
+        height: 10rem;
+        width: 100%;
+        background-color: var(--background-color);
+        box-shadow: var(--background-color) 0px 1rem 1rem;
+        transition: box-shadow ease-in-out 0.5s, background ease-in-out 0.5s;
+    }
+    .navBar{
+        display: none;
+        z-index: 110;
+        width: 100%;
+        animation: appear 0.5s ease-out forwards;
+    }
+    .container{
+        margin-left: 0;
+    }
+    #barSwitch{
+        display: flex;
+        position: absolute;        
+        left: 3vw;
+        background-color: inherit;
+        border: none;
+    }
+    .news a{
+        width: 50vw;
+    }
+    .news{
+        width: max-content;
+    }
+    .content{
+        height: auto;
+    }
+    .navBarButtons a, .navBarButtons button{
+        width: 60%;
+        text-align: center;
+        font-size: 2.5rem;
+    }
+    .navBarButtons a{
+        text-indent: 1vw;
+        justify-content: center;
+        padding: 0;
+    }
+    .navBar h1{
+        font-size: 2.5rem;
+    }
+    .navBar h2{
+        font-size: 4rem;
+        text-align: center;
+        padding: 0;
+    }
+    .navBar .lineBetween{
+        width: 55%;
+    }
+    .button{
+        width: 20vw;
+    }
+    .top .icon{
+        height: 4rem;
+        width: 4rem;
+        transition: ease-in-out 0.5s;
+    }
+    .order{
+        position: absolute;
+        top: 13vh;
+        animation: appear 0.5s ease-in-out forwards;
+    }
+    @keyframes appear {
+        0% {
+            opacity: 0;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    #newsDiv{
+        margin-top: 25vh;
     }
 }

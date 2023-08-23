@@ -11,7 +11,7 @@
 <body>
     <div class="navBar">
         <div>
-            <h2>Tech news</h2>
+            <h2>Tech News</h2>
         </div>
         <div class="navBarButtons">
             <h1>Categories</h1>
@@ -24,7 +24,7 @@
             <div class="lineBetween"></div>
             <button id="robots">Robots</button>
         </div>
-        <div class="navBarButtons">
+        <div class="navBarButtons" id="navigation">
             <h1>Navigation</h1>
             <div class="lineBetween"></div>
             <a href="#home"><img class="icon" src="home.svg"><span>Home</span></a>
@@ -34,8 +34,9 @@
     </div>
     <div class="container" id="home">
         <div class="top">
+            <button id="barSwitch" onclick="changeBarStatus()"><img class="icon" src="toggle_bar.svg"></button>
             <h1 class="animate">Tech News</h1>
-            <button id="switch"><img class="icon" src="toggle_on.svg"></button>
+            <button type="button" id="switch"><img class="icon" src="toggle_on.svg"></button>
         </div>
         <div class="order animate">
             <button class="button" id="firstButton">Order</button>
