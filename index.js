@@ -67,7 +67,7 @@ const defaultOrder = () => {
                         </div>
                     </div>
                 </div>
-                <div class="newsInfo" style="visibility: hidden" id="newsInfoMobile">
+                <div class="newsInfo" id="newsInfoMobile">
                     <p>Author <b>${news[n].author}</b></p>
                     <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                 </div>
