@@ -61,11 +61,15 @@ const defaultOrder = () => {
                     <div class="typewriter">
                         <a href="${news[n].link}">${news[n].header}</a>
                         <p id="text" class="description">${news[n].description}</p>
-                        <div class="newsInfo">
+                        <div class="newsInfo" id="newsInfoDesktop">
                             <p>Author <b>${news[n].author}</b></p>
                             <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                         </div>
                     </div>
+                </div>
+                <div class="newsInfo" style="visibility: hidden" id="newsInfoMobile">
+                    <p>Author <b>${news[n].author}</b></p>
+                    <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                 </div>
             </div>
             <div class="lineBetween"></div>`
