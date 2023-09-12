@@ -274,12 +274,16 @@ body{
 #barSwitch{
     display: none;
 }
+#newsInfoMobile{
+    visibility: hidden;
+}
+#newsInfoDesktop {
+    visibility: visible;
+}
+
 @media only screen and (orientation: portrait) {
     html{
         font-size: 0.7rem;
-    }
-    .description {
-        visibility: hidden;
     }
     .top{
         position: fixed;
@@ -360,5 +364,11 @@ body{
     }
     #newsDiv{
         margin-top: 28vh;
+    }
+    #newsInfoMobile{
+        visibility: visible;
+    }
+    #newsInfoDesktop {
+        visibility: hidden;
     }
 }
