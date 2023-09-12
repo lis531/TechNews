@@ -336,7 +336,7 @@ body{
         width: 55%;
     }
     .button{
-        width: 20vw;
+        width: 23vw;
     }
     .top .icon{
         height: 4rem;
@@ -345,7 +345,8 @@ body{
     }
     .order{
         position: absolute;
-        top: 13vh;
+        top: 16vh;
+        font-size: 2rem;
         animation: appear 0.5s ease-in-out forwards;
     }
     @keyframes appear {
@@ -358,6 +359,6 @@ body{
         }
     }
     #newsDiv{
-        margin-top: 25vh;
+        margin-top: 28vh;
     }
 }
