@@ -278,6 +278,9 @@ body{
     html{
         font-size: 0.7rem;
     }
+    .description {
+        visibility: hidden;
+    }
     .top{
         position: fixed;
         top: 0vw;
@@ -306,9 +309,7 @@ body{
     }
     .news a{
         width: 50vw;
-    }
-    .news{
-        width: max-content;
+        font-size: 1.5rem;
     }
     .content{
         height: auto;
