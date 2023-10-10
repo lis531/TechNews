@@ -276,6 +276,7 @@ body{
 }
 #newsInfoMobile{
     visibility: hidden;
+    height: 0px;
 }
 #newsInfoDesktop {
     visibility: visible;
@@ -322,9 +323,9 @@ body{
         width: 60%;
         text-align: center;
         font-size: 2.5rem;
+        text-indent: 1vw;
     }
     .navBarButtons a{
-        text-indent: 1vw;
         justify-content: center;
         padding: 0;
     }
