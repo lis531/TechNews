@@ -89,9 +89,9 @@ body{
     border: none;
     border-radius: 1rem;
     color: inherit;
+    text-indent: 1vw;
 }
 .navBarButtons a{
-    text-indent: 1vw;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -282,7 +282,7 @@ body{
     visibility: visible;
 }
 
-@media only screen and (orientation: portrait) {
+@media (orientation: portrait) {
     html{
         font-size: 0.7rem;
     }
@@ -307,7 +307,7 @@ body{
     }
     #barSwitch{
         display: flex;
-        position: absolute;        
+        position: absolute;
         left: 3vw;
         background-color: inherit;
         border: none;
@@ -315,6 +315,9 @@ body{
     .news a{
         width: 50vw;
         font-size: 1.5rem;
+    }
+    .news img{
+        margin: 4vw;
     }
     .content{
         height: auto;
@@ -337,8 +340,8 @@ body{
         text-align: center;
         padding: 0;
     }
-    .navBar .lineBetween{
-        width: 55%;
+    .lineBetween{
+        width: 70%;
     }
     .button{
         width: 23vw;
@@ -368,6 +371,7 @@ body{
     }
     #newsInfoMobile{
         visibility: visible;
+        height: auto;
     }
     #newsInfoDesktop {
         visibility: hidden;
