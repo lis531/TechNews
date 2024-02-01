@@ -1,5 +1,3 @@
-const date = new Date();
-
 let news = [];
 let numberOfNews = 0;
 let previousNews = "";
@@ -7,11 +5,7 @@ let previousNews = "";
 const lineBetween = document.querySelectorAll(".lineBetween");
 const container = document.querySelector("#newsDiv")
 
-let rssUrls = [
-    'https://www.wired.com/feed/category/science/robots/rss',
-    'https://www.wired.com/feed/tag/ai/latest/rss',
-    'https://www.wired.com/feed/category/science/space/rss'
-];
+let rssUrls = [];
 
 const fetchRssData = async (rssUrl) => {
     const response = await fetch(rssUrl);
@@ -53,58 +47,83 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 const defaultOrder = () => {
     for (let n = 0; n < numberOfNews; n++) {
-        if (previousNews !== news[n].header && !news[n].image.endsWith(".mp4")){
-            container.innerHTML += `
-            <div class="content">
-                <div class="news">
-                    <img src="${news[n].image}" alt="">
-                    <div class="typewriter">
-                        <a href="${news[n].link}">${news[n].header}</a>
-                        <p id="text" class="description">${news[n].description}</p>
-                        <div class="newsInfo" id="newsInfoDesktop">
-                            <p>Author <b>${news[n].author}</b></p>
-                            <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
+        if(news[n]){
+            if (previousNews !== news[n].header && !news[n].image.endsWith(".mp4")){
+                container.innerHTML += `
+                <div class="content">
+                    <div class="news" href="${news[n].link}">
+                        <img src="${news[n].image}" alt="">
+                        <div class="typewriter">
+                            <a href="${news[n].link}">${news[n].header}</a>
+                            <p id="text" class="description">${news[n].description}</p>
+                            <div class="newsInfo" id="newsInfoDesktop">
+                                <p>Author <b>${news[n].author}</b></p>
+                                <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
+                            </div>
                         </div>
                     </div>
+                    <div class="newsInfo" id="newsInfoMobile">
+                        <p>Author <b>${news[n].author}</b></p>
+                        <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
+                    </div>
                 </div>
-                <div class="newsInfo" id="newsInfoMobile">
-                    <p>Author <b>${news[n].author}</b></p>
-                    <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
-                </div>
-            </div>
-            <div class="lineBetween"></div>`
-            previousNews = news[n].header;
-            const newsDivs = document.querySelectorAll('.news');
-            newsDivs.forEach(div => {
-                observer.observe(div);
-            });
-            const descriptionDivs = document.querySelectorAll('.description')
-            descriptionDivs.forEach(description => {
-                observer.observe(description);
-            });
-        }
-        else{
-            previousNews = news[n].header;
+                <div class="lineBetween"></div>`
+                previousNews = news[n].header;
+                const newsDivs = document.querySelectorAll('.news');
+                newsDivs.forEach(div => {
+                    observer.observe(div);
+                });
+                const descriptionDivs = document.querySelectorAll('.description')
+                descriptionDivs.forEach(description => {
+                    observer.observe(description);
+                });
+            }
+            else{
+                previousNews = news[n].header;
+            }
         }
     }
 };
-
+news.forEach((n) => {
+    n.addEventListener('click', () => {
+        window.open(n.link);
+        console.log(n.link);
+    });
+});
 const orderByLatest = () => {
+    if(orderLatest.classList.contains('active')){
+        return;
+    }
     container.innerHTML = "";
     news.sort((a, b) => (a.date < b.date ? 1 : -1));
     defaultOrder();
+    orderOldest.classList.remove('active');
+    orderName.classList.remove('active');
+    orderLatest.classList.add('active');
 };
 
 const orderByOldest = () => {
+    if(orderOldest.classList.contains('active')){
+        return;
+    }
     container.innerHTML = "";    
     news.sort((a, b) => (a.date > b.date ? 1 : -1));
     defaultOrder();
+    orderLatest.classList.remove('active');
+    orderName.classList.remove('active');
+    orderOldest.classList.add('active');
 };
 
 const orderByName = () => {
+    if(orderName.classList.contains('active')){
+        return;
+    }
     container.innerHTML = "";
     news.sort((a, b) => (a.header > b.header ? 1 : -1));
     defaultOrder();
+    orderOldest.classList.remove('active');
+    orderLatest.classList.remove('active');
+    orderName.classList.add('active');
 };
 
 const orderLatest = document.getElementById('latest');
@@ -114,10 +133,6 @@ orderLatest.addEventListener('click', orderByLatest);
 orderOldest.addEventListener('click', orderByOldest);
 orderName.addEventListener('click', orderByName);
 
-rssUrls.forEach((rssUrl) => {
-    fetchRssData(rssUrl);
-});
-
 /* Categories */
 
 const all = document.getElementById('all');
@@ -126,77 +141,94 @@ const ai = document.getElementById('ai');
 const robots = document.getElementById('robots');
 
 const backToDefault = () =>{
-    all.style.setProperty('background-color', 'inherit');
-    ai.style.setProperty('background-color', 'inherit');
-    robots.style.setProperty('background-color', 'inherit');
-    space.style.setProperty('background-color', 'inherit');
+    all.classList.remove('active');
+    space.classList.remove('active');
+    ai.classList.remove('active');
+    robots.classList.remove('active');
 }
-all.style.setProperty('background-color', 'var(--button-hover-color)');
-all.addEventListener('click', () => {
-    backToDefault()
-    all.style.setProperty('background-color', 'var(--button-hover-color)');
+
+const setToAll = () =>{
+    all.classList.add('active');
     rssUrls = [
         'https://www.wired.com/feed/category/science/robots/rss',
         'https://www.wired.com/feed/tag/ai/latest/rss',
         'https://www.wired.com/feed/category/science/space/rss'
     ];
-    news = [];
     rssUrls.forEach((rssUrl, index) => {
         fetchRssData(rssUrl, index);
     });
+};
+setToAll();
+
+all.addEventListener('click', () => {
+    if(rssUrls.length == 3){
+        return;
+    }
+    news = [];
+    backToDefault()
+    setToAll();
 });
   
 space.addEventListener('click', () => {
+    if(rssUrls[0] == 'https://www.wired.com/feed/category/science/space/rss'){
+        return;
+    }
     backToDefault()
-    space.style.setProperty('background-color', 'var(--button-hover-color)');
-    const rssUrl = 'https://www.wired.com/feed/category/science/space/rss';
+    space.classList.add('active');
+    rssUrls = ['https://www.wired.com/feed/category/science/space/rss'];
     news = [];
-    fetchRssData(rssUrl);
+    fetchRssData(rssUrls[0]);
 });
   
 ai.addEventListener('click', () => {
+    if(rssUrls[0] == 'https://www.wired.com/feed/tag/ai/latest/rss'){
+        return;
+    }
     backToDefault()
-    ai.style.setProperty('background-color', 'var(--button-hover-color)');
-    const rssUrl = 'https://www.wired.com/feed/tag/ai/latest/rss';
+    ai.classList.add('active');
+    rssUrls = ['https://www.wired.com/feed/tag/ai/latest/rss'];
     news = [];
-    fetchRssData(rssUrl);
+    fetchRssData(rssUrls[0]);
 });
   
 robots.addEventListener('click', () => {
+    if(rssUrls[0] == 'https://www.wired.com/feed/category/science/robots/rss'){
+        return;
+    }
     backToDefault()
-    robots.style.setProperty('background-color', 'var(--button-hover-color)');
-    const rssUrl = 'https://www.wired.com/feed/category/science/robots/rss';
+    robots.classList.add('active');
+    rssUrls = ['https://www.wired.com/feed/category/science/robots/rss'];
     news = [];
-    fetchRssData(rssUrl);
+    fetchRssData(rssUrls[0]);
 });
 
 /* footer */
-const footer = document.getElementById('bottom');
+const footer = document.getElementsByTagName('footer')[0];
+const date = new Date();
 footer.innerHTML = `Borys Gajewski © ${date.getFullYear()}`;
 
 /* other */
 const theme = document.getElementById('switch');
 const changeTheme = () => {
     const img = theme.getElementsByTagName('img')[0];
-    if (img.src.includes('toggle_off.svg')) {
-        img.src = 'toggle_on.svg';
+    if (img.src.includes('public/toggle_off.svg')) {
+        img.src = 'public/toggle_on.svg';
         document.documentElement.style.setProperty('--background-color', '#202634')
         document.documentElement.style.setProperty('--button-color', '#283044')
-        document.documentElement.style.setProperty('--order-button-color', '#283044')
-        document.documentElement.style.setProperty('--button-hover-color', '#414959')
-        document.documentElement.style.setProperty('--order-button-hover-color', '#414959')
+        document.documentElement.style.setProperty('--button-hover-color', '#41495977')
+        document.documentElement.style.setProperty('--button-pressed-color', '#414959')
         document.documentElement.style.setProperty('--darker-button-color', '#131925')
         document.documentElement.style.setProperty('--text-color', '#FFFAFF')
         document.documentElement.style.setProperty('--navBar-color', '#283044')
         document.documentElement.style.setProperty('--box-shadow-color', '#1b1f24')
         document.documentElement.style.setProperty('--filter-val', '100%')
     } else {
-        img.src = 'toggle_off.svg';
+        img.src = 'public/toggle_off.svg';
         document.documentElement.style.setProperty('--background-color', '#FFFFFF')
         document.documentElement.style.setProperty('--button-color', '#F0F0F0')
         document.documentElement.style.setProperty('--order-button-color', '#F0F0F0')
-        document.documentElement.style.setProperty('--button-hover-color', '#E5E5E5')
-        document.documentElement.style.setProperty('--order-button-hover-color', '#E5E5E5')
+        document.documentElement.style.setProperty('--button-hover-color', '#E5E5E577')
+        document.documentElement.style.setProperty('--button-pressed-color', '#E5E5E5')
         document.documentElement.style.setProperty('--darker-button-color', '#D9D9D9')
         document.documentElement.style.setProperty('--text-color', '#000000')
         document.documentElement.style.setProperty('--navBar-color', '#F0F0F0')
@@ -206,10 +238,10 @@ const changeTheme = () => {
 };
 
 const changeBarStatus = () => {
-    if(document.getElementsByClassName('navBar')[0].style.display == 'flex'){
-        document.getElementsByClassName('navBar')[0].style.display = 'none';
-        document.getElementsByClassName('order')[0].style.display = 'flex';
-        if(theme.getElementsByTagName('img')[0].src.includes('toggle_off.svg'))
+    if(document.getElementsByClassName('navBar')[0].classList.contains('appear')){
+        document.getElementsByClassName('navBar')[0].classList.remove('appear');
+        document.getElementsByClassName('navBar')[0].classList.add('disappear');
+        if(theme.getElementsByTagName('img')[0].src.includes('public/toggle_off.svg'))
             document.documentElement.style.setProperty('--background-color', '#FFFFFF');
         else
             document.documentElement.style.setProperty('--background-color', '#202634');
@@ -217,9 +249,9 @@ const changeBarStatus = () => {
         document.documentElement.style.overflowY = 'scroll';
     }
     else{
-        document.getElementsByClassName('navBar')[0].style.display = 'flex';
-        document.getElementsByClassName('order')[0].style.display = 'none';
-        if(theme.getElementsByTagName('img')[0].src.includes('toggle_off.svg'))
+        document.getElementsByClassName('navBar')[0].classList.add('appear');
+        document.getElementsByClassName('navBar')[0].classList.remove('disappear');
+        if(theme.getElementsByTagName('img')[0].src.includes('public/toggle_off.svg'))
             document.documentElement.style.setProperty('--background-color', '#FFFFFF');
         else
             document.documentElement.style.setProperty('--background-color', '#283044');
@@ -227,4 +259,5 @@ const changeBarStatus = () => {
         document.documentElement.style.overflowY = 'hidden';
     }
 }
+
 theme.addEventListener('click', changeTheme);
