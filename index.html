@@ -16,33 +16,33 @@
         <div class="navBarButtons">
             <h1>Categories</h1>
             <div class="lineBetween"></div>
-            <button id="all">All</button>
+            <button id="all" type="button">All</button>
             <div class="lineBetween"></div>
-            <button id="ai">AI</button>
+            <button id="ai" type="button">AI</button>
             <div class="lineBetween"></div>
-            <button id="space">Space</button>
+            <button id="space" type="button">Space</button>
             <div class="lineBetween"></div>
-            <button id="robots">Robots</button>
+            <button id="robots" type="button">Robots</button>
         </div>
         <div class="navBarButtons" id="navigation">
             <h1>Navigation</h1>
             <div class="lineBetween"></div>
-            <a href="#home"><img class="icon" src="public/home.svg"><span>Home</span></a>
+            <a href="#home"><img class="icon" src="public/home.svg" title="Home"><span>Home</span></a>
             <div class="lineBetween"></div>
-            <a href="#bottom"><img class="icon" src="public/bottom.svg"><span>Bottom</span></a>
+            <a href="#bottom"><img class="icon" src="public/bottom.svg" title="Bottom"><span>Bottom</span></a>
         </div>
     </div>
     <div class="container" id="home">
         <div class="top">
-            <button id="barSwitch" onclick="changeBarStatus()"><img class="icon" src="public/toggle_bar.svg"></button>
+            <button id="barSwitch" onclick="changeBarStatus()" type="button" title="Toggle Bar"><img class="icon" src="public/toggle_bar.svg" title="toggle"></button>
             <h1 class="animate">Tech News</h1>
-            <button type="button" id="switch"><img class="icon" src="public/toggle_on.svg"></button>
+            <button type="button" id="switch" title="Switch"><img class="icon" src="public/toggle_on.svg" title="toggle"></button>
         </div>
         <div class="order animate">
-            <button class="button" id="firstButton">Order</button>
-            <button class="button" id="latest">Latest</button>
-            <button class="button" id="oldest">Oldest</button>
-            <button class="button" id="lastButton">By Header</button>
+            <button class="button" id="firstButton" type="button">Order</button>
+            <button class="button" id="latest" type="button">Latest</button>
+            <button class="button" id="oldest" type="button">Oldest</button>
+            <button class="button" id="lastButton" type="button">By Header</button>
         </div>
         <div id="newsDiv">
         </div>

@@ -8,6 +8,7 @@ const container = document.querySelector("#newsDiv")
 let rssUrls = [];
 
 const fetchRssData = async (rssUrl) => {
+    news = [];
     const response = await fetch(rssUrl);
     const str = await response.text();
     const data = new window.DOMParser().parseFromString(str, 'text/xml');
@@ -55,14 +56,14 @@ const defaultOrder = () => {
                         <img src="${news[n].image}" alt="">
                         <div class="typewriter">
                             <a href="${news[n].link}">${news[n].header}</a>
-                            <p id="text" class="description">${news[n].description}</p>
-                            <div class="newsInfo" id="newsInfoDesktop">
+                            <p class="description">${news[n].description}</p>
+                            <div class="newsInfo newsInfoDesktop">
                                 <p>Author <b>${news[n].author}</b></p>
                                 <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                             </div>
                         </div>
                     </div>
-                    <div class="newsInfo" id="newsInfoMobile">
+                    <div class="newsInfo newsInfoMobile">
                         <p>Author <b>${news[n].author}</b></p>
                         <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                     </div>
@@ -84,16 +85,15 @@ const defaultOrder = () => {
         }
     }
 };
+
 news.forEach((n) => {
     n.addEventListener('click', () => {
         window.open(n.link);
         console.log(n.link);
     });
 });
+
 const orderByLatest = () => {
-    if(orderLatest.classList.contains('active')){
-        return;
-    }
     container.innerHTML = "";
     news.sort((a, b) => (a.date < b.date ? 1 : -1));
     defaultOrder();
@@ -103,9 +103,6 @@ const orderByLatest = () => {
 };
 
 const orderByOldest = () => {
-    if(orderOldest.classList.contains('active')){
-        return;
-    }
     container.innerHTML = "";    
     news.sort((a, b) => (a.date > b.date ? 1 : -1));
     defaultOrder();
@@ -115,9 +112,6 @@ const orderByOldest = () => {
 };
 
 const orderByName = () => {
-    if(orderName.classList.contains('active')){
-        return;
-    }
     container.innerHTML = "";
     news.sort((a, b) => (a.header > b.header ? 1 : -1));
     defaultOrder();
@@ -129,9 +123,21 @@ const orderByName = () => {
 const orderLatest = document.getElementById('latest');
 const orderOldest = document.getElementById('oldest');
 const orderName = document.getElementById('lastButton');
-orderLatest.addEventListener('click', orderByLatest);
-orderOldest.addEventListener('click', orderByOldest);
-orderName.addEventListener('click', orderByName);
+orderLatest.addEventListener('click', () =>{
+    if(!orderLatest.classList.contains('active')){
+        orderByLatest();
+    }
+});
+orderOldest.addEventListener('click', () => {
+    if(!orderOldest.classList.contains('active')){
+        orderByOldest()
+    }
+});
+orderName.addEventListener('click', () => {
+    if(!orderName.classList.contains('active')){
+        orderByName();
+    }
+});
 
 /* Categories */
 
@@ -161,45 +167,38 @@ const setToAll = () =>{
 setToAll();
 
 all.addEventListener('click', () => {
-    if(rssUrls.length == 3){
+    if(all.classList.contains('active')){
         return;
     }
-    news = [];
     backToDefault()
     setToAll();
 });
-  
+
 space.addEventListener('click', () => {
-    if(rssUrls[0] == 'https://www.wired.com/feed/category/science/space/rss'){
+    if(space.classList.contains('active')){
         return;
     }
     backToDefault()
     space.classList.add('active');
-    rssUrls = ['https://www.wired.com/feed/category/science/space/rss'];
-    news = [];
-    fetchRssData(rssUrls[0]);
+    fetchRssData('https://www.wired.com/feed/category/science/space/rss');
 });
   
 ai.addEventListener('click', () => {
-    if(rssUrls[0] == 'https://www.wired.com/feed/tag/ai/latest/rss'){
+    if(ai.classList.contains('active')){
         return;
     }
     backToDefault()
     ai.classList.add('active');
-    rssUrls = ['https://www.wired.com/feed/tag/ai/latest/rss'];
-    news = [];
-    fetchRssData(rssUrls[0]);
+    fetchRssData('https://www.wired.com/feed/tag/ai/latest/rss');
 });
   
 robots.addEventListener('click', () => {
-    if(rssUrls[0] == 'https://www.wired.com/feed/category/science/robots/rss'){
+    if(robots.classList.contains('active')){
         return;
     }
     backToDefault()
     robots.classList.add('active');
-    rssUrls = ['https://www.wired.com/feed/category/science/robots/rss'];
-    news = [];
-    fetchRssData(rssUrls[0]);
+    fetchRssData('https://www.wired.com/feed/category/science/robots/rss');
 });
 
 /* footer */

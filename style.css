@@ -170,7 +170,7 @@ body{
     flex-direction: column;
     margin-left: 5vw;
     margin-right: 5vw;
-    height: 13vh;
+    height: 15vh;
 }
 .news{
     display: flex;
@@ -276,10 +276,10 @@ body{
     display: none;
     cursor: pointer;
 }
-#newsInfoMobile{
+.newsInfoMobile{
     display: none;
 }
-#newsInfoDesktop {
+.newsInfoDesktop {
     display: flex;
 }
 footer{
@@ -397,13 +397,13 @@ footer{
     #newsDiv{
         margin-top: 28vh;
     }
-    #newsInfoMobile{
+    .newsInfoMobile{
         display: flex;
         height: auto;
         text-wrap: nowrap;
         font-size: larger;
     }
-    #newsInfoDesktop {
+    .newsInfoDesktop {
         display: none;
     }
 }
