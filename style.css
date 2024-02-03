@@ -180,6 +180,8 @@ body{
     transition: ease-in-out 0.5s;
     transition-property: scale;
     z-index: 10;
+    transform: translateY(100%);
+    opacity: 0;
 }
 .lineBetween{
     width: 60%;
@@ -242,19 +244,19 @@ body{
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    min-height: 100vh;
 }
 .animate {
     animation: fadeIn 0.5s ease-out forwards;
 }
 @keyframes fadeIn {
     0% {
-        opacity: 0;
         transform: translateY(100%)
     }
 
     to {
         opacity: 1;
-        transform: translateY(0)
+        transform: translateY(0%)
     }
 }
 .text-animation{
@@ -397,6 +399,8 @@ footer{
     #newsDiv{
         margin-top: 28vh;
     }
+}
+@media (max-width: 500px) {
     .newsInfoMobile{
         display: flex;
         height: auto;
