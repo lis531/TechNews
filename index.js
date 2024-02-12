@@ -248,7 +248,7 @@ const changeBarStatus = () => {
             document.documentElement.style.setProperty('--background-color', '#202634');
         document.getElementById('navigation').style.bgColor = 'flex';
         document.documentElement.style.overflowY = 'scroll';
-        document.body.style.marginRight = '0';
+        document.body.style.paddingRight = '0';
         document.getElementsByClassName('top')[0].style.width = '100%';
     }
     else{
@@ -260,7 +260,7 @@ const changeBarStatus = () => {
             document.documentElement.style.setProperty('--background-color', '#283044');
         document.getElementById('navigation').style.display = 'none';
         document.documentElement.style.overflowY = 'hidden';
-        document.body.style.marginRight = '.5rem';
+        document.body.style.paddingRight = '.5rem';
         document.getElementsByClassName('top')[0].style.width = 'calc(100% - 6px)';
     }
 }
