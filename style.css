@@ -18,7 +18,7 @@ html{
     overflow-y: scroll;
 }
 body::-webkit-scrollbar {
-    width: .5rem
+    width: 6px;
 }
 body::-webkit-scrollbar-thumb {
     background: var(--darker-button-color)
@@ -28,7 +28,7 @@ body{
     display: flex;
     flex-direction: row;
     background-color: var(--background-color);
-    transition: ease-in-out 0.5s;
+    transition: background-color ease-in-out 0.5s, color ease-in-out 0.5s;
 }
 
 /*top*/
@@ -243,8 +243,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
+    margin-top: 3vh;
 }
 .animate {
     animation: fadeIn 0.5s ease-out forwards;

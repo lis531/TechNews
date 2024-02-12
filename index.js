@@ -38,9 +38,10 @@ const observer = new IntersectionObserver((entries, observer) => {
         if (entry.isIntersecting) {
             if(entry.target.classList.contains('description')){
                 entry.target.classList.add('text-animation');
-            }else{
-                entry.target.classList.add('animate');
-            }            
+            }
+            else if(entry.target.classList.contains('content')){
+                entry.target.getElementsByClassName('news')[0].classList.add('animate');
+            }     
             observer.unobserve(entry.target);
         }
     });
@@ -70,7 +71,7 @@ const defaultOrder = () => {
                 </div>
                 <div class="lineBetween"></div>`
                 previousNews = news[n].header;
-                const newsDivs = document.querySelectorAll('.news');
+                const newsDivs = document.querySelectorAll('.content');
                 newsDivs.forEach(div => {
                     observer.observe(div);
                 });
@@ -84,6 +85,7 @@ const defaultOrder = () => {
             }
         }
     }
+    window.scrollTo(0, 0);
 };
 
 news.forEach((n) => {
@@ -246,6 +248,8 @@ const changeBarStatus = () => {
             document.documentElement.style.setProperty('--background-color', '#202634');
         document.getElementById('navigation').style.bgColor = 'flex';
         document.documentElement.style.overflowY = 'scroll';
+        document.body.style.marginRight = '0';
+        document.getElementsByClassName('top')[0].style.width = '100%';
     }
     else{
         document.getElementsByClassName('navBar')[0].classList.add('appear');
@@ -256,6 +260,8 @@ const changeBarStatus = () => {
             document.documentElement.style.setProperty('--background-color', '#283044');
         document.getElementById('navigation').style.display = 'none';
         document.documentElement.style.overflowY = 'hidden';
+        document.body.style.marginRight = '.5rem';
+        document.getElementsByClassName('top')[0].style.width = 'calc(100% - 6px)';
     }
 }
 
