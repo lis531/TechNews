@@ -41,6 +41,8 @@ const observer = new IntersectionObserver((entries, observer) => {
             }
             else if(entry.target.classList.contains('content')){
                 entry.target.getElementsByClassName('news')[0].classList.add('animate');
+                entry.target.getElementsByClassName('newsInfoDesktop')[0].classList.add('animate');
+                entry.target.getElementsByClassName('newsInfoMobile')[0].classList.add('animate');
             }     
             observer.unobserve(entry.target);
         }
@@ -91,7 +93,6 @@ const defaultOrder = () => {
 news.forEach((n) => {
     n.addEventListener('click', () => {
         window.open(n.link);
-        console.log(n.link);
     });
 });
 
@@ -246,10 +247,7 @@ const changeBarStatus = () => {
             document.documentElement.style.setProperty('--background-color', '#FFFFFF');
         else
             document.documentElement.style.setProperty('--background-color', '#202634');
-        document.getElementById('navigation').style.bgColor = 'flex';
         document.documentElement.style.overflowY = 'scroll';
-        document.body.style.paddingRight = '0';
-        document.getElementsByClassName('top')[0].style.width = '100%';
     }
     else{
         document.getElementsByClassName('navBar')[0].classList.add('appear');
@@ -258,11 +256,19 @@ const changeBarStatus = () => {
             document.documentElement.style.setProperty('--background-color', '#FFFFFF');
         else
             document.documentElement.style.setProperty('--background-color', '#283044');
-        document.getElementById('navigation').style.display = 'none';
         document.documentElement.style.overflowY = 'hidden';
-        document.body.style.paddingRight = '.5rem';
-        document.getElementsByClassName('top')[0].style.width = 'calc(100% - 6px)';
     }
 }
+
+//set rgba(0, 0, 0, 0.5) to background
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const threshold = 100;
+    if (scrollPosition > threshold) {
+        document.getElementsByClassName('top')[0].style.background = 'rgba(0, 0, 0, 0.5)';
+    } else {
+        document.getElementsByClassName('top')[0].style.background = 'none';
+    }
+});
 
 theme.addEventListener('click', changeTheme);

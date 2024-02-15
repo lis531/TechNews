@@ -18,10 +18,7 @@ html{
     overflow-y: scroll;
 }
 body::-webkit-scrollbar {
-    width: 6px;
-}
-body::-webkit-scrollbar-thumb {
-    background: var(--darker-button-color)
+    width: 0px;
 }
 body{
     margin: 0;
@@ -37,6 +34,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
 }
 #switch{
     color: inherit;
@@ -44,7 +42,7 @@ body{
     font-size: 4rem;
     right: 3vw;
     border: none;
-    background-color: inherit;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,14 +178,16 @@ body{
     transition: ease-in-out 0.5s;
     transition-property: scale;
     z-index: 10;
-    transform: translateY(100%);
+}
+.news, .newsInfo {
     opacity: 0;
+    transform: translateY(100%);
 }
 .lineBetween{
     width: 60%;
     height: 0.15vh;
     background-color: var(--button-color);
-    border-radius: 100px;
+    border-radius: 10px;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
     transition: ease-in-out 0.5s;
@@ -246,7 +246,7 @@ body{
     margin-top: 3vh;
 }
 .animate {
-    animation: fadeIn 0.5s ease-out forwards;
+    animation: fadeIn 0.35s ease-out forwards;
 }
 @keyframes fadeIn {
     0% {
@@ -276,6 +276,7 @@ body{
 #barSwitch{
     display: none;
     cursor: pointer;
+    background-color: transparent;
 }
 .newsInfoMobile{
     display: none;
@@ -313,6 +314,9 @@ footer{
         z-index: 110;
         height: 10rem;
         width: 100%;
+        transition: background ease-in-out 0.35s;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
     }
     .navBar{
         opacity: 0;
@@ -326,7 +330,6 @@ footer{
         display: flex;
         position: absolute;
         left: 3vw;
-        background-color: inherit;
         border: none;
     }
     .news a{
@@ -365,19 +368,22 @@ footer{
     .top .icon{
         height: 4rem;
         width: 4rem;
-        transition: ease-in-out 0.5s;
+        transition: ease-in-out 0.35s;
     }
     .order{
         position: absolute;
         top: 16vh;
         font-size: 2rem;
-        animation: appear 0.5s ease-in-out forwards;
+        animation: appear 0.35s ease-in-out forwards;
     }
     .appear{
-        animation: appear 0.5s ease-in-out forwards;
+        animation: appear 0.35s ease-in-out forwards;
+    }
+    .appear + .container > .top{
+        background: transparent !important;
     }
     .disappear{
-        animation: disappear 0.5s ease-in-out forwards;
+        animation: disappear 0.35s ease-in-out forwards;
     }
     @keyframes appear {
         0% {
@@ -398,6 +404,9 @@ footer{
     #newsDiv{
         margin-top: 28vh;
     }
+    #navigation{
+        display: none;
+    }
 }
 @media (max-width: 500px) {
     .newsInfoMobile{
@@ -408,5 +417,16 @@ footer{
     }
     .newsInfoDesktop {
         display: none;
+    }
+    .button{
+        height: 5vh;
+        font-size: 2rem;
+    }
+    .order{
+        top: 10vh;
+        padding: 0;
+    }
+    #newsDiv{
+        margin-top: 20vh;
     }
 }
