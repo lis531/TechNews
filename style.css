@@ -9,6 +9,7 @@
     --navBar-color: #283044;
     --box-shadow-color: #1b1f24;
     --filter-val: 100%;
+    --nav-background: #00000080;
 }
 html{
     font-family: 'Arvo', serif;
@@ -16,9 +17,9 @@ html{
     scroll-behavior: smooth;
     font-size: calc(0.5vw + 0.3vh);
     overflow-y: scroll;
-}
-body::-webkit-scrollbar {
-    width: 0px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-color) var(--background-color);
+    transition: scrollbar-color ease-in-out 0.5s;
 }
 body{
     margin: 0;
@@ -278,12 +279,6 @@ body{
     cursor: pointer;
     background-color: transparent;
 }
-.newsInfoMobile{
-    display: none;
-}
-.newsInfoDesktop {
-    display: flex;
-}
 footer{
     padding: 1vh 0 1vh 0;
 }
@@ -322,6 +317,7 @@ footer{
         opacity: 0;
         z-index: 110;
         width: 100%;
+        display: none;
     }
     .container{
         margin-left: 0;
@@ -387,9 +383,11 @@ footer{
     }
     @keyframes appear {
         0% {
+            display: flex;
             opacity: 0;
         }
         100% {
+            display: flex;
             opacity: 1;
         }
     }
@@ -397,27 +395,18 @@ footer{
         0% {
             opacity: 1;
         }
-        100% {
+        99% {
             opacity: 0;
+        }
+        100% {
+            display: none;
         }
     }
     #newsDiv{
         margin-top: 28vh;
     }
-    #navigation{
-        display: none;
-    }
 }
 @media (max-width: 500px) {
-    .newsInfoMobile{
-        display: flex;
-        height: auto;
-        text-wrap: nowrap;
-        font-size: larger;
-    }
-    .newsInfoDesktop {
-        display: none;
-    }
     .button{
         height: 5vh;
         font-size: 2rem;

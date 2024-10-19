@@ -41,8 +41,7 @@ const observer = new IntersectionObserver((entries, observer) => {
             }
             else if(entry.target.classList.contains('content')){
                 entry.target.getElementsByClassName('news')[0].classList.add('animate');
-                entry.target.getElementsByClassName('newsInfoDesktop')[0].classList.add('animate');
-                entry.target.getElementsByClassName('newsInfoMobile')[0].classList.add('animate');
+                entry.target.getElementsByClassName('newsInfo')[0].classList.add('animate');
             }     
             observer.unobserve(entry.target);
         }
@@ -60,15 +59,11 @@ const defaultOrder = () => {
                         <div class="typewriter">
                             <a href="${news[n].link}">${news[n].header}</a>
                             <p class="description">${news[n].description}</p>
-                            <div class="newsInfo newsInfoDesktop">
+                            <div class="newsInfo">
                                 <p>Author <b>${news[n].author}</b></p>
                                 <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                             </div>
                         </div>
-                    </div>
-                    <div class="newsInfo newsInfoMobile">
-                        <p>Author <b>${news[n].author}</b></p>
-                        <p>Added <b>${news[n].date.toLocaleDateString('pl-PL')}</b></p>
                     </div>
                 </div>
                 <div class="lineBetween"></div>`
@@ -224,6 +219,7 @@ const changeTheme = () => {
         document.documentElement.style.setProperty('--navBar-color', '#283044')
         document.documentElement.style.setProperty('--box-shadow-color', '#1b1f24')
         document.documentElement.style.setProperty('--filter-val', '100%')
+        document.documentElement.style.setProperty('--nav-background', '#00000080')
     } else {
         img.src = 'public/toggle_off.svg';
         document.documentElement.style.setProperty('--background-color', '#FFFFFF')
@@ -236,10 +232,12 @@ const changeTheme = () => {
         document.documentElement.style.setProperty('--navBar-color', '#F0F0F0')
         document.documentElement.style.setProperty('--box-shadow-color', '#C2C2C2')
         document.documentElement.style.setProperty('--filter-val', '0%')
+        document.documentElement.style.setProperty('--nav-background', '#FFFFFF80')
     }
 };
 
 const changeBarStatus = () => {
+    document.getElementsByClassName('navBar')[0].style.display = 'flex';
     if(document.getElementsByClassName('navBar')[0].classList.contains('appear')){
         document.getElementsByClassName('navBar')[0].classList.remove('appear');
         document.getElementsByClassName('navBar')[0].classList.add('disappear');
@@ -260,12 +258,11 @@ const changeBarStatus = () => {
     }
 }
 
-//set rgba(0, 0, 0, 0.5) to background
 window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY;
     const threshold = 100;
     if (scrollPosition > threshold) {
-        document.getElementsByClassName('top')[0].style.background = 'rgba(0, 0, 0, 0.5)';
+        document.getElementsByClassName('top')[0].style.background = 'var(--nav-background)';
     } else {
         document.getElementsByClassName('top')[0].style.background = 'none';
     }
