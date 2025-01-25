@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="public/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="public/favicon.avif" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,31 +16,25 @@
         <div class="navBarButtons">
             <h1>Categories</h1>
             <div class="lineBetween"></div>
-            <button id="all" type="button">All</button>
+            <button id="all" type="button"><img src="public/icons/all.png" class="icon" width="40px" height="40px" alt="All icon">All</button>
             <div class="lineBetween"></div>
-            <button id="ai" type="button">AI</button>
+            <button id="ai" type="button"><img src="public/icons/ai.svg" class="icon" alt="AI icon"></img>AI</button>
             <div class="lineBetween"></div>
-            <button id="space" type="button">Space</button>
+            <button id="space" type="button"><img src="public/icons/rocket.svg" class="icon" alt="Rocket icon">Space</button>
             <div class="lineBetween"></div>
-            <button id="robots" type="button">Robots</button>
+            <button id="robots" type="button"><img src="public/icons/robot.svg" class="icon" alt="Robot icon"></img>Robots</button>
         </div>
     </div>
     <div class="container" id="home">
         <div class="top">
-            <button id="barSwitch" onclick="changeBarStatus()" type="button" title="Toggle Bar"><img class="icon" src="public/toggle_bar.svg" title="toggle"></button>
+            <button id="barSwitch" onclick="toggleNavBar()" type="button" title="Toggle Bar"><img class="icon" src="public/icons/toggle_bar.svg" title="toggle"></button>
             <h1 class="animate">Tech News</h1>
-            <button type="button" id="switch" title="Switch"><img class="icon" src="public/toggle_on.svg" title="toggle"></button>
-        </div>
-        <div class="order animate">
-            <button class="button" id="firstButton" type="button">Order</button>
-            <button class="button" id="latest" type="button">Latest</button>
-            <button class="button" id="oldest" type="button">Oldest</button>
-            <button class="button" id="lastButton" type="button">By Header</button>
+            <button type="button" id="switch" title="Switch"><img class="icon" src="public/icons/toggle_on.svg" title="toggle"></button>
         </div>
         <div id="newsDiv">
         </div>
         <footer id="bottom"></footer>
     </div>
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

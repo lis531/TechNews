@@ -1,5 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
-:root{
+@font-face {
+    font-family: 'Arvo';
+    src: url('public/fonts/Arvo.woff2') format('truetype');
+}
+
+@font-face {
+    font-family: 'AlbertSans';
+    src: url('public/fonts/AlbertSans.woff2') format('truetype');
+}
+
+:root {
     --background-color: #202634;
     --button-color: #283044;
     --button-hover-color: #41495977;
@@ -11,47 +20,69 @@
     --filter-val: 100%;
     --nav-background: #00000080;
 }
-html{
+
+.light-theme {
+    --background-color: #FFFFFF;
+    --button-color: #F0F0F0;
+    --button-hover-color: #E5E5E577;
+    --button-pressed-color: #E5E5E5;
+    --darker-button-color: #D9D9D9;
+    --text-color: #000000;
+    --navBar-color: #F0F0F0;
+    --box-shadow-color: #C2C2C2;
+    --filter-val: 0%;
+    --nav-background: #FFFFFF80;
+}
+
+* {
     font-family: 'Arvo', serif;
     color: var(--text-color);
+    transition: color 0.5s ease-in-out;
+}
+
+p {
+    font-family: 'AlbertSans', sans-serif;
+}
+
+html {
     scroll-behavior: smooth;
-    font-size: calc(0.5vw + 0.3vh);
     overflow-y: scroll;
-    scrollbar-width: thin;
     scrollbar-color: var(--text-color) var(--background-color);
     transition: scrollbar-color ease-in-out 0.5s;
-}
-body{
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    background-color: var(--background-color);
-    transition: background-color ease-in-out 0.5s, color ease-in-out 0.5s;
+    body {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        background-color: var(--background-color);
+        transition: background-color 0.5s ease-in-out;
+    }
 }
 
-/*top*/
-.top{
+a {
+    transition: none;
+}
+
+.top {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 
-}
-#switch{
-    color: inherit;
-    position: absolute;
-    font-size: 4rem;
-    right: 3vw;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    #switch {
+        color: inherit;
+        position: absolute;
+        font-size: 4rem;
+        right: 3vw;
+        border: none;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
 }
 
-/*navBar*/
-.navBar{
+.navBar {
     display: flex;
     position: fixed;
     flex-direction: column;
@@ -60,96 +91,72 @@ body{
     gap: 4%;
     background-color: var(--navBar-color);
     box-shadow: 0 0px 1rem black;
-    transition: ease-in-out 0.5s;
-    transition-property: background-color;
+    transition: background-color 0.5s ease-in-out;
+
+    h2 {
+        gap: 1vw;
+        padding: 2vw;
+        padding-bottom: 0;
+        text-align: left;
+        font-size: 3rem;
+    }
+
+    .navBarButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        button {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            padding-left: 1vw;
+            width: 17vw;
+            height: 6vh;
+            cursor: pointer;
+            font-size: 1.7rem;
+            background-color: var(--button-color);
+            border: none;
+            border-radius: 1rem;
+            color: inherit;
+            transition: background-color 0.5s ease-in-out;
+            text-indent: 1rem;
+
+            &:hover {
+                background-color: var(--button-hover-color);
+            }
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            text-decoration: none;
+        }
+    }
+
+    .lineBetween {
+        background-color: var(--button-hover-color);
+        margin-top: .3vh;
+        margin-bottom: .3vh;
+        width: 65%;
+    }
 }
-.navBar h2{
-    gap: 1vw;
-    padding: 2vw;
-    padding-bottom: 0;
-    text-align: left;
-    font-size: 3rem;
-}
-.navBarButtons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-.navBarButtons a, .navBarButtons button{
-    width: 17vw;
-    height: 6vh;
-    text-align: left;
-    cursor: pointer;
-    font-size: 1.7rem;
-    transition: ease-in-out 0.5s;
-    transition-property: background-color;
-    background-color: var(--button-color);
-    border: none;
-    border-radius: 1rem;
-    color: inherit;
-    text-indent: 1vw;
-}
-.navBarButtons a{
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-decoration: inherit;
-}
-.navBarButtons button{
-    padding: 0;
-}
-.navBarButtons a:hover, .navBarButtons button:hover{
-    background-color: var(--button-hover-color);
-}
-.active{
+
+.active {
     background-color: var(--button-pressed-color) !important;
 }
-.icon{
+
+.icon {
     width: 3rem;
     height: 3rem;
     filter: invert(var(--filter-val));
-    transition: ease-in-out 0.5s;
+    transition: 0.5s ease-in-out;
 }
 
-/*order*/
-.order{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8%;
-    padding: 1vh;
-}
-.button{
-    border: none;
-    background-color: var(--button-color);
-    width: 15vw;
-    height: 7vh;
-    padding: 0;
-    min-height: 2rem;
-    cursor: pointer;
-    font-size: 2.2rem;
-    color: inherit;
-    transition: ease-in-out 0.5s;
-    transition-property: background-color;
-}
-.button:hover{
-    background-color: var(--button-hover-color);
-}
-#firstButton{
-    cursor: default;
-    border-top-left-radius: 3rem;
-    border-bottom-left-radius: 3rem;
-    background-color: var(--darker-button-color);
-}
-#lastButton{
-    border-top-right-radius: 3rem;
-    border-bottom-right-radius: 3rem;
-}
-
-/*news*/
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,142 +164,156 @@ body{
     width: 100%;
     height: 100%;
     margin-left: 20vw;
+    h1 {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0.5vh 5vw;
+        height: 15vh;
+    }
+
+    #newsDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 3vh;
+        min-height: 100vh;
+    }
 }
-.container h1{
-    font-size: 4rem;
-    text-align: center;
-}
-.content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    height: 15vh;
-}
-.news{
+
+.news {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    transition: ease-in-out 0.5s;
-    transition-property: scale;
+    transition: scale 0.3s ease-in-out;
     z-index: 10;
+    &, .newsInfo {
+        opacity: 0;
+        transform: translateY(100%);
+        display: flex;
+    }
+    &:hover {
+        scale: 1.1;
+    }
+    a {
+        display: block;
+        font-size: 1.8rem;
+        text-align: left;
+        width: 35vw;
+        font-weight: 900;
+        color: inherit;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    img {
+        margin-right: 1.5vw;
+        width: 18rem;
+        height: 11rem;
+        border-radius: 0.5rem;
+        box-shadow: 7px 7px 7px var(--box-shadow-color);
+        transition: box-shadow 0.5s ease-in-out;
+    }
+    .description {
+        display: inline-block;
+        width: 30vw;
+        visibility: hidden;
+        margin-bottom: 0;
+        font-size: 1.2rem;
+    }
 }
-.news, .newsInfo {
-    opacity: 0;
-    transform: translateY(100%);
-}
-.lineBetween{
-    width: 60%;
-    height: 0.15vh;
-    background-color: var(--button-color);
-    border-radius: 10px;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
-    transition: ease-in-out 0.5s;
-}
-.navBar .lineBetween{
-    background-color: var(--button-hover-color);
-    margin-top: .3vh;
-    margin-bottom: .3vh;
-    width: 65%;
-}
-.news a{
-    display: block;
-    font-size: 1.8rem;
-    text-align: left;
-    width: 30vw;
-    margin-top: .5vh;
-    margin-bottom: 0;
-    font-weight: 900;
-    color: inherit;
-    text-decoration: inherit;
-}
-.news a:hover{
-    text-decoration: underline;
-}
-.news img{
-    margin: 1.5vw;
-    width: 18rem;
-    height: 11rem;
-    border-radius: 0.5rem;
-    box-shadow: 7px 7px 7px var(--box-shadow-color);
-    transition: ease-in-out 0.5s;
-    transition-property: box-shadow;
-}
-.news:hover{
-    scale: 1.15;
-}
-.newsInfo{
+
+.newsInfo {
     display: flex;
     align-items: center;
     justify-content: left;
     flex-direction: row;
     gap: 10%;
+    p {
+        margin-bottom: 0;
+    }
 }
-.news .description {
-    display: inline-block;
-    width: 30vw;
-    visibility: hidden;
-    margin-bottom: 0;
-    font-size: 1.2rem;
+
+.lineBetween {
+    width: 60%;
+    height: 0.15vh;
+    background-color: var(--button-color);
+    border-radius: 10px;
+    margin: 1.5vh 0;
+    transition: 0.5s ease-in-out;
 }
-#newsDiv{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 3vh;
-}
+
 .animate {
     animation: fadeIn 0.35s ease-out forwards;
 }
-@keyframes fadeIn {
-    0% {
-        transform: translateY(100%)
-    }
 
+@keyframes fadeIn {
+    0% { transform: translateY(100%); }
     to {
         opacity: 1;
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
-.text-animation{
+
+.text-animation {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     animation: typing 1s steps(30, end);
     visibility: visible !important;
 }
+
 @keyframes typing {
-    0% {
-        width: 0vw;
-    }
-    100% {
-        width: 30vw;
-    }
+    0% { width: 0vw; }
+    100% { width: 30vw; }
 }
-#barSwitch{
+
+#barSwitch {
     display: none;
     cursor: pointer;
     background-color: transparent;
 }
-footer{
-    padding: 1vh 0 1vh 0;
+
+footer {
+    padding: 1vh 0;
 }
+
 @media (orientation: portrait) {
-    .navBarButtons{
-        margin-top: 15vh;
+    .navBar {
+        z-index: 110;
+        width: 70%;
+        transform: translateX(-100%);
+        .navBarButtons {
+            margin-top: 15vh;
+            a, button {
+                width: 80%;
+                font-size: 2.5rem;
+                text-align: center;
+                padding-left: 9vw;
+                text-indent: 2rem;
+            }
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-align: left;
+            width: 80%;
+            padding-left: 18vw;
+        }
+        h2 {
+            display: none;
+        }
     }
-    .description{
-        width: 40vw;
-    }
-    .news:hover .description{
-        white-space: nowrap;
-    }
-    .description{
+
+    .description {
         width: 50vw;
         display: flex;
         flex-direction: column;
@@ -300,87 +321,64 @@ footer{
         justify-content: center;
         text-align: center;
     }
-    html{
+
+    html {
         font-size: calc(0.7vw + 0.5vh);
     }
-    .top{
+
+    .top {
         position: fixed;
-        top: 0vw;
+        top: 0;
         z-index: 110;
         height: 10rem;
         width: 100%;
-        transition: background ease-in-out 0.35s;
-        -webkit-backdrop-filter: blur(10px);
+        transition: background 0.35s ease-in-out;
         backdrop-filter: blur(10px);
     }
-    .navBar{
-        opacity: 0;
-        z-index: 110;
-        width: 100%;
-        display: none;
-    }
-    .container{
+
+    .container {
         margin-left: 0;
     }
-    #barSwitch{
+
+    #barSwitch {
         display: flex;
         position: absolute;
         left: 3vw;
         border: none;
     }
-    .news a{
-        width: 50vw;
+
+    .news a {
+        width: 46vw;
         font-size: 1.5rem;
     }
-    .news img{
-        margin: 4vw;
-        margin-bottom: 1vh;
+
+    .news img {
+        margin-right: 4vw;
     }
-    .content{
-        height: auto;
+
+    .content {
+        width: 83%;
+        height: auto !important;
     }
-    .navBarButtons a, .navBarButtons button{
-        width: 60%;
-        text-align: center;
-        font-size: 2.5rem;
-        text-indent: 1vw;
-    }
-    .navBarButtons a{
-        justify-content: center;
-        padding: 0;
-    }
-    .navBar h1{
-        font-size: 2.5rem;
-    }
-    .navBar h2{
-        display: none;
-    }
-    .lineBetween{
+
+    .lineBetween {
         width: 70%;
     }
-    .button{
+
+    .button {
         width: 23vw;
     }
-    .top .icon{
+
+    .top .icon {
         height: 4rem;
         width: 4rem;
-        transition: ease-in-out 0.35s;
+        transition: 0.35s ease-in-out;
     }
-    .order{
-        position: absolute;
-        top: 16vh;
-        font-size: 2rem;
-        animation: appear 0.35s ease-in-out forwards;
+
+    #newsDiv {
+        margin-top: 10vh !important;
     }
-    .appear{
-        animation: appear 0.35s ease-in-out forwards;
-    }
-    .appear + .container > .top{
-        background: transparent !important;
-    }
-    .disappear{
-        animation: disappear 0.35s ease-in-out forwards;
-    }
+
     @keyframes appear {
         0% {
             display: flex;
@@ -392,30 +390,18 @@ footer{
         }
     }
     @keyframes disappear {
-        0% {
-            opacity: 1;
-        }
-        99% {
-            opacity: 0;
-        }
-        100% {
-            display: none;
-        }
-    }
-    #newsDiv{
-        margin-top: 28vh;
+        0% { opacity: 1; }
+        99% { opacity: 0; }
+        100% { display: none; }
     }
 }
+
 @media (max-width: 500px) {
-    .button{
+    .newsInfo {
+        justify-content: space-between;
+    }
+    .button {
         height: 5vh;
         font-size: 2rem;
-    }
-    .order{
-        top: 10vh;
-        padding: 0;
-    }
-    #newsDiv{
-        margin-top: 20vh;
     }
 }
