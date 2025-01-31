@@ -123,10 +123,13 @@ for (let i = 0; i < navBarButtons.length; i++) {
     });
 }
 
-/* Theme */
+/* NavBar */
 const toggleNavBar = () => {
     const navBar = document.getElementsByClassName('navBar')[0];
     const isHidden = document.documentElement.style.overflowY === 'hidden';
+
+    if (navBar.classList.contains('animating')) return;
+    navBar.classList.add('animating');
     navBar.animate([
         { transform: isHidden ? 'translateX(0)' : 'translateX(-100%)' },
         { transform: isHidden ? 'translateX(-100%)' : 'translateX(0)' }
@@ -136,9 +139,47 @@ const toggleNavBar = () => {
         fill: 'forwards'
     }).finished.then(() => {
         document.documentElement.style.overflowY = isHidden ? 'scroll' : 'hidden';
+        navBar.classList.remove('animating');
+    });
+};
+const toggleNavBarHide = () => {
+    const navBar = document.getElementsByClassName('navBar')[0];
+    const container = document.getElementsByClassName('container')[0];
+    const hideButton = document.getElementById('hideSwitch');
+    const isHidden = navBar.style.transform === 'translateX(-100%)';
+    
+    if (navBar.classList.contains('animating')) return;
+    navBar.classList.add('animating');
+
+    const animateOpts = {
+        duration: 300,
+        easing: 'ease-in-out',
+        fill: 'forwards'
+    };
+
+    hideButton.animate([
+        { marginLeft: isHidden ? '0' : '20vw' },
+        { marginLeft: isHidden ? '20vw' : '0' }
+    ], animateOpts);
+    hideButton.querySelector('img').animate([
+        { transform: `rotate(${isHidden ? 180 : 0}deg)` },
+        { transform: `rotate(${isHidden ? 0 : 180}deg)` }
+    ], animateOpts);
+    container.animate([
+        { marginLeft: isHidden ? '0' : '20vw' },
+        { marginLeft: isHidden ? '20vw' : '0' }
+    ], animateOpts);
+
+    navBar.animate([
+        { transform: `translateX(${isHidden ? '-100%' : '0'})` },
+        { transform: `translateX(${isHidden ? '0' : '-100%'})` }
+    ], animateOpts).finished.then(() => {
+        navBar.style.transform = isHidden ? 'translateX(0)' : 'translateX(-100%)';
+        navBar.classList.remove('animating');
     });
 };
 
+/* Theme */
 const changeTheme = () => {
     document.documentElement.classList.toggle('light-theme');
     const icon = switchBtn.getElementsByTagName('img')[0];
